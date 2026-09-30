@@ -78,51 +78,94 @@ def upload_video(video_path: Path, title: str, description: str,
 
     with open(video_path, "rb") as fh:
         offset = 0
-        for attempt in range(5):
+        errors = 0
+        max_retries = 10
+
+        def _finalize() -> dict:
+            put = requests.put(upload_url, headers={
+                "Authorization": f"Bearer {token}",
+                "Content-Range": f"bytes */{size}",
+            }, timeout=120)
+            if put.status_code in (200, 201):
+                vid = put.json()["id"]
+                log.info("Uploaded %s as %s", video_path.name, vid)
+                return {"video_id": vid, "url": WATCH_URL.format(id=vid)}
+            raise YouTubeError(
+                f"Finalize failed (HTTP {put.status_code}): {put.text[:400]}")
+
+        def _resync_offset() -> int:
+            """Ask the session how many bytes it already has (after an error)."""
+            try:
+                probe = requests.put(upload_url, headers={
+                    "Authorization": f"Bearer {token}",
+                    "Content-Range": f"bytes */{size}",
+                }, timeout=120)
+                if probe.status_code == 308:
+                    rng = probe.headers.get("Range", "")
+                    return int(rng.split("-")[-1]) + 1
+            except (requests.RequestException, ValueError):
+                pass
+            return offset
+
+        # NOTE: this must be a while-loop, NOT a for-loop over attempts:
+        # successful 308 progress responses also consume loop iterations, so
+        # a capped for-loop silently caps the video at attempts x CHUNK bytes
+        # (a 50.9 MB episode died at chunk 6/7 with `for attempt in range(5)`).
+        while True:
+            if offset >= size:
+                return _finalize()
             try:
                 fh.seek(offset)
                 data = fh.read(CHUNK)
-                end = offset + len(data) - 1 if data else size - 1
+                end = offset + len(data) - 1
                 headers = {
                     "Authorization": f"Bearer {token}",
                     "Content-Type": "video/mp4",
                     "Content-Range": f"bytes {offset}-{end}/{size}",
+                    "Content-Length": str(len(data)),
                 }
-                if data:
-                    headers["Content-Length"] = str(len(data))
                 put = requests.put(upload_url, headers=headers, data=data,
                                    timeout=600)
-                if put.status_code in (200, 201):
-                    vid = put.json()["id"]
-                    log.info("Uploaded %s as %s", video_path.name, vid)
-                    return {"video_id": vid, "url": WATCH_URL.format(id=vid)}
-                if put.status_code == 308:
-                    rng = put.headers.get("Range", f"bytes=0-{offset}")
-                    try:
-                        offset = int(rng.split("-")[-1]) + 1
-                    except ValueError:
-                        offset = end + 1
-                    log.info("Resumable progress: %d/%d bytes", offset, size)
-                    if offset >= size:
-                        # Server has everything; ask for finalization.
-                        put = requests.put(upload_url, headers={
-                            "Authorization": f"Bearer {token}",
-                            "Content-Range": f"bytes */{size}",
-                        }, timeout=120)
-                        if put.status_code in (200, 201):
-                            vid = put.json()["id"]
-                            return {"video_id": vid,
-                                    "url": WATCH_URL.format(id=vid)}
-                        raise YouTubeError(
-                            f"Finalize failed (HTTP {put.status_code}): {put.text[:400]}")
-                else:
-                    raise YouTubeError(
-                        f"Chunk upload failed (HTTP {put.status_code}): {put.text[:400]}")
             except requests.RequestException as exc:
-                log.warning("Network error during upload (attempt %d): %s",
-                            attempt + 1, exc)
-                time.sleep(5 * (attempt + 1))
-    raise YouTubeError("Upload failed after retries")
+                errors += 1
+                if errors > max_retries:
+                    raise YouTubeError(
+                        f"Upload failed after {max_retries} network errors: "
+                        f"{exc}") from exc
+                wait = min(5 * errors, 60)
+                log.warning("Network error during upload (retry %d/%d, "
+                            "waiting %ds): %s", errors, max_retries, wait, exc)
+                time.sleep(wait)
+                offset = _resync_offset()
+                continue
+
+            if put.status_code in (200, 201):
+                vid = put.json()["id"]
+                log.info("Uploaded %s as %s", video_path.name, vid)
+                return {"video_id": vid, "url": WATCH_URL.format(id=vid)}
+            if put.status_code == 308:
+                rng = put.headers.get("Range", f"bytes=0-{offset}")
+                try:
+                    offset = int(rng.split("-")[-1]) + 1
+                except ValueError:
+                    offset = end + 1
+                log.info("Resumable progress: %d/%d bytes", offset, size)
+                continue
+            if put.status_code >= 500:  # transient server error — retry
+                errors += 1
+                if errors > max_retries:
+                    raise YouTubeError(
+                        f"Upload failed after {max_retries} server errors "
+                        f"(last HTTP {put.status_code}): {put.text[:400]}")
+                wait = min(5 * errors, 60)
+                log.warning("Server error HTTP %d during upload (retry %d/%d, "
+                            "waiting %ds)", put.status_code, errors,
+                            max_retries, wait)
+                time.sleep(wait)
+                offset = _resync_offset()
+                continue
+            raise YouTubeError(
+                f"Chunk upload failed (HTTP {put.status_code}): {put.text[:400]}")
 
 
 def set_thumbnail(video_id: str, thumbnail_path: Path, settings) -> bool:
