@@ -79,6 +79,41 @@ def _render_segment(png: Path, frames: int, out: Path, *, zoom_in: bool,
     _run(cmd, label=f"segment {png.name}")
 
 
+BG_COLOR = "0x070B18"  # episode background for letterboxed clips
+
+
+def _render_clip_segment(src: Path, seconds: float, out: Path) -> None:
+    """Trim + scale + letterbox a real video clip into a 1080p30 segment.
+
+    Skips the first moments of the source (intros), takes `seconds` worth,
+    scales it to fit 1920x1080 (padding with the episode background), and
+    adds short fades so it blends with the surrounding slides. Encoded with
+    the SAME parameters as slide segments → lossless concat downstream.
+    """
+    try:
+        total = probe_duration(src)
+    except Exception:  # noqa: BLE001
+        raise RuntimeError(f"clip unreadable: {src}")
+    seconds = max(1.0, min(seconds, total - 0.5))
+    start = max(0.0, min(2.0, total - seconds - 0.5))
+    fade_out_st = max(seconds - 0.6, 0)
+    vf = (
+        "scale=1920:1080:force_original_aspect_ratio=decrease:"
+        "flags=lanczos,"
+        f"pad=1920:1080:(ow-iw)/2:(oh-ih)/2:color={BG_COLOR},"
+        "fps=30,format=yuv420p,"
+        "fade=t=in:st=0:d=0.5,"
+        f"fade=t=out:st={fade_out_st:.3f}:d=0.6"
+    )
+    cmd = [
+        "ffmpeg", "-y", "-ss", f"{start:.2f}", "-t", f"{seconds:.2f}",
+        "-i", str(src),
+        "-filter_complex", f"[0:v]{vf}[v]",
+        "-map", "[v]", *ENCODE, "-an", str(out),
+    ]
+    _run(cmd, label=f"clip {src.name}")
+
+
 def _concat(files: list[Path], out: Path, kind: str) -> None:
     listfile = out.with_suffix(".concat.txt")
     listfile.write_text(
@@ -95,12 +130,23 @@ def _concat(files: list[Path], out: Path, kind: str) -> None:
 
 
 def render_video(slides: list[Path], wavs: list[Path], out_path: Path,
-                 ken_burns: bool = True, work_dir: Path | None = None) -> dict:
+                 ken_burns: bool = True, work_dir: Path | None = None,
+                 clips: dict | None = None,
+                 clip_max_seconds: float = 12.0) -> dict:
+    """Assemble slides (+ optional real video clips) + narration → MP4.
+
+    `clips` maps SECTION index (0-based, parallel to `slides`) to a clips.Clip
+    (a downloaded legal video). For a section with a clip, the first
+    `clip_max_seconds` of its narration play over the real video (trimmed,
+    scaled, letterboxed); the rest of the section plays over its Ken Burns
+    slide. Sections without a clip are pure Ken Burns, as before.
+    """
     if len(slides) != len(wavs):
         raise ValueError(f"{len(slides)} slides vs {len(wavs)} narration tracks")
     work = work_dir or out_path.parent / "segments"
     work.mkdir(parents=True, exist_ok=True)
 
+    clips = clips or {}
     segments: list[Path] = []
     total_frames = 0
     n = len(slides)
@@ -108,18 +154,45 @@ def render_video(slides: list[Path], wavs: list[Path], out_path: Path,
         dur = probe_duration(wav)
         # last slide holds a little longer for the fade-out
         pad = 1.6 if i == n - 1 else 0.0
-        frames = math.ceil((dur + pad) * 30)
+        total = dur + pad
         seg = work / f"seg_{i:02d}.mp4"
-        _render_segment(
-            png, frames, seg,
-            zoom_in=(i % 2 == 0),
-            ken_burns=ken_burns,
-            fade_in=(i == 0),
-            fade_out=(i == n - 1),
-        )
+        clip = clips.get(i)
+
+        if clip is not None and total > 3.0:
+            # --- real-video section: clip first, slide for the remainder ----
+            clip_len = min(clip_max_seconds, clip.duration - 1.0, total - 1.0)
+            clip_len = max(clip_len, 1.0)
+            part_a = work / f"seg_{i:02d}_a.mp4"
+            _render_clip_segment(clip.path, clip_len, part_a)
+            rest = total - clip_len
+            if rest > 1.2:
+                part_b = work / f"seg_{i:02d}_b.mp4"
+                frames_b = math.ceil(rest * 30)
+                _render_segment(
+                    png, frames_b, part_b,
+                    zoom_in=(i % 2 == 0), ken_burns=ken_burns,
+                    fade_in=False, fade_out=(i == n - 1))
+                _concat([part_a, part_b], seg, "video")
+                part_a.unlink(missing_ok=True)
+                part_b.unlink(missing_ok=True)
+            else:
+                part_a.replace(seg)
+            log.info("Segment %02d/%02d: %.1fs (%.1fs real clip + slide) [%s]",
+                     i + 1, n, total, clip_len, clip.title[:40])
+        else:
+            frames = math.ceil(total * 30)
+            _render_segment(
+                png, frames, seg,
+                zoom_in=(i % 2 == 0),
+                ken_burns=ken_burns,
+                fade_in=(i == 0),
+                fade_out=(i == n - 1),
+            )
+            log.info("Segment %02d/%02d: %.1fs (%s)", i + 1, n,
+                     frames / 30, png.name)
+
         segments.append(seg)
-        total_frames += frames
-        log.info("Segment %02d/%02d: %.1fs (%s)", i + 1, n, frames / 30, png.name)
+        total_frames += math.ceil(total * 30)
 
     silent_video = work / "video_silent.mp4"
     _concat(segments, silent_video, "video")

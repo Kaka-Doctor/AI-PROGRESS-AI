@@ -1,82 +1,9 @@
 {
-  "completed": 2,
-  "last_run": "2026-09-30T21:32:37+00:00",
-  "last_video": {
-    "id": "hi4YAFXH-TU",
-    "url": "https://youtu.be/hi4YAFXH-TU"
-  },
-  "last_post_date": "2026-10-01",
-  "recent_stories": [
-    {
-      "fingerprint": "26115d569fba57a1",
-      "title": "Disrupting a coordinated model-distillation campaign",
-      "url": "https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign",
-      "source": "OpenAI",
-      "date": "2026-09-30T18:50:41+00:00"
-    },
-    {
-      "fingerprint": "69c7cdff4a93d83e",
-      "title": "Helping small businesses put AI to work",
-      "url": "https://openai.com/index/helping-small-businesses-put-ai-to-work",
-      "source": "OpenAI",
-      "date": "2026-09-30T18:50:41+00:00"
-    },
-    {
-      "fingerprint": "4c288fab1a407342",
-      "title": "DevDay 2026 Recap",
-      "url": "https://openai.com/index/devday-2026-recap",
-      "source": "OpenAI",
-      "date": "2026-09-30T18:50:41+00:00"
-    },
-    {
-      "fingerprint": "5b2d9306b26a9454",
-      "title": "Introducing GPT-6.1 Sol",
-      "url": "https://openai.com/index/introducing-gpt-6-1-sol",
-      "source": "OpenAI",
-      "date": "2026-09-30T18:50:41+00:00"
-    },
-    {
-      "fingerprint": "8941e98360f0df9a",
-      "title": "Show HN: JBR-001 \u2013 An open-source 3D printable desktop robot",
-      "url": "https://projecthub.arduino.cc/syntheticaidata/jbr-001-a-desktop-companion-robot-powered-by-arduino-uno-q-b11c96",
-      "source": "Hacker News",
-      "date": "2026-09-30T18:50:41+00:00"
-    },
-    {
-      "fingerprint": "269b13aa0d08afb0",
-      "title": "Gemini 4 Argon: our next era of frontier intelligence",
-      "url": "https://deepmind.google/blog/gemini-4-argon-our-next-era-of-frontier-intelligence/",
-      "source": "Google DeepMind",
-      "date": "2026-09-30T21:32:37+00:00"
-    },
-    {
-      "fingerprint": "fbafd69fb0bb521f",
-      "title": "Launch HN: Magnitude (YC S25) \u2013 Self-optimizing inference engine for agents",
-      "url": "https://github.com/magnitudedev/magnitude",
-      "source": "Hacker News",
-      "date": "2026-09-30T21:32:37+00:00"
-    },
-    {
-      "fingerprint": "c9e38d111d22af62",
-      "title": "Google announces Gemini 4 and says it\u2019s so capable that only \u2018trusted cyber defenders\u2019 can have it right now",
-      "url": "https://www.theverge.com/tech/1002980/google-gemini-4-argon",
-      "source": "The Verge AI",
-      "date": "2026-09-30T21:32:37+00:00"
-    },
-    {
-      "fingerprint": "3b231272f6cd03a9",
-      "title": "Google announces Gemini 4 Argon AI model, but you can't use it yet",
-      "url": "https://arstechnica.com/google/2026/09/google-announces-gemini-4-argon-ai-model-but-you-cant-use-it-yet/",
-      "source": "Ars Technica AI",
-      "date": "2026-09-30T21:32:37+00:00"
-    },
-    {
-      "fingerprint": "3656394c3657f002",
-      "title": "DoorDash launches an AI agent you can text to order food",
-      "url": "https://techcrunch.com/2026/09/30/doordash-launches-an-ai-agent-you-can-text-to-order-food/",
-      "source": "TechCrunch AI",
-      "date": "2026-09-30T21:32:37+00:00"
-    }
-  ],
-  "note": "Daily AI news episodes for the AI Progress AI channel."
+  "completed": 0,
+  "last_run": null,
+  "last_video": null,
+  "last_post_date": null,
+  "post_log": [],
+  "recent_stories": [],
+  "note": "AI news episodes, twice a day (~every 12h). post_log keeps recent upload times for the cadence guard; recent_stories keeps covered-story fingerprints so missed news gets covered next episode without exact repeats."
 }

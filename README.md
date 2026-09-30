@@ -1,34 +1,52 @@
 # AI Progress AI — Daily AI-News Video Agent
 
-A fully autonomous YouTube channel agent. Every day it:
+A fully autonomous YouTube channel agent. **Twice a day** (every ~12 hours)
+it:
 
-1. **Searches the web** for what just happened in AI — official blog feeds
-   (OpenAI, Google DeepMind, Google AI, Alibaba Qwen, Hugging Face) plus the
-   tech press that covers every major lab (TechCrunch, The Verge, Ars
-   Technica, MIT Tech Review, Wired, VentureBeat, SCMP), Hacker News front
-   page, and Reddit — no API keys needed.
-2. **Ranks the day's stories** (source weight, recency, keyword salience,
-   social traction) and picks the top 3-5, skipping anything already covered
-   in the last few days.
-3. **Writes an energetic news-anchor script** with Gemini (facts only — it
+1. **Searches the world for what just happened in AI** — 22 RSS feeds
+   fetched in parallel: official lab/research blogs (OpenAI, Google
+   DeepMind, Google AI, Google Research, Alibaba Qwen, Hugging Face, NVIDIA,
+   Berkeley BAIR) + dedicated AI media (The Decoder, MIT News AI, TechCrunch,
+   The Verge, Ars Technica, MIT Tech Review, ZDNet, Wired, VentureBeat) +
+   world coverage keyword-filtered for AI (BBC Tech UK, Guardian Tech UK,
+   SCMP China, Times of India, Al Jazeera) — plus Hacker News front page and
+   Reddit. No API keys needed.
+2. **Ranks the stories** (source weight, recency, keyword salience, social
+   traction) and picks the top 3-5.
+3. **Covers the news the previous episode missed**: stories covered in the
+   last 60 hours are excluded, so each episode is new material; if a big
+   story is still the only thing worth covering, it returns as an explicit
+   **FOLLOW-UP** — the script must take a new angle ("since our last
+   report…"), never an exact repeat.
+4. **Writes an energetic news-anchor script** with Gemini (facts only — it
    is forbidden to invent products, numbers, or dates).
-4. **Fetches real article imagery** (og:image from the actual announcement
+5. **Fetches real article imagery** (og:image from the actual announcement
    pages) for full-bleed b-roll cards with Ken Burns motion.
-5. **Renders a 1080p episode** — neon-tech studio slides, giant Anton
-   headlines, animated zoom — plus an **epic high-contrast thumbnail**.
-6. **Narrates it with an energetic male voice** (edge-tts
+6. **Hunts for real, legal video clips** — YouTube Creative-Commons videos
+   (searched via the channel's own API access, downloaded with yt-dlp),
+   Wikimedia Commons (CC0/CC-BY/CC-BY-SA), and the Internet Archive (public
+   domain). Up to 3 clips per episode: each plays ~12 seconds (trimmed,
+   scaled, letterboxed) at the start of its story, then blends back into
+   the slides. Every clip is **attributed in the description** (title,
+   author, link, license) as its license requires. Slides-only is the
+   graceful fallback.
+7. **Renders a 1080p episode** — neon-tech studio slides, giant Anton
+   headlines, animated zoom, real video b-roll — plus an **epic high-
+   contrast thumbnail**.
+8. **Narrates it with an energetic male voice** (edge-tts
    `en-US-AndrewNeural`, +8% pace) — free, no API key.
-7. **Uploads to YouTube** with title, timestamps, tags, thumbnail, and then
+9. **Uploads to YouTube** with title, timestamps, tags, thumbnail, and then
    **replies to viewer comments every 6 hours** in the viewer's own language.
 
 Channel: https://www.youtube.com/@AIPROGRESSAI
 
-## One episode per day — guaranteed
+## Two episodes per day — morning + evening
 
-The workflow runs at three times a day (09:15, 17:15, 18:45 UTC). A
-once-per-day guard in `agent/main.py` allows exactly one upload per EAT
-calendar day, so extra slots simply exit clean after the day's episode is
-live — GitHub cron delays and double-fires can never double-post.
+The workflow runs at **06:15 UTC (09:15 EAT)** and **18:15 UTC (21:15 EAT)**,
+plus a 19:45 UTC backup slot in case the evening run fails. A cadence guard
+in `agent/main.py` requires at least 10.5 hours since the last upload, so
+GitHub cron delays and double-fires can never stack posts — and the morning
+episode naturally covers whatever the evening one missed.
 
 ## Pre-upload quality gate
 
@@ -42,21 +60,6 @@ If Gemini is completely down (503 storm), the agent waits out the storm and
 retries script generation up to 3 rounds ~15 minutes apart, across a
 6-model fallback chain. The last resort is a **headline-walk episode** that
 reads the real RSS headlines and summaries — it never invents news.
-
-## Custom thumbnails need a verified channel (one-time, 1 minute)
-
-YouTube only allows custom thumbnails on **verified channels**. Until the
-channel is verified, thumbnail uploads return 403 and YouTube falls back to
-an auto-picked frame (the episode itself is unaffected). Verify once:
-
-1. Open **https://www.youtube.com/verify** signed in as the channel's Google
-   account.
-2. Enter the received phone code.
-
-From then on every new episode gets its epic thumbnail automatically. To
-re-apply it to an episode uploaded before verifying, run the
-**Set Thumbnail** workflow (`.github/workflows/set_thumbnail.yml`) — with a
-blank `video_id` it targets the latest episode from `state.json`.
 
 ## Setup (one-time)
 
@@ -96,7 +99,7 @@ Scopes needed: `youtube.upload` + `youtube.force-ssl`.
 GitHub → Actions → **Daily AI News Video** → Run workflow:
 
 - `no_upload` — dry run (renders, QA-checks, does not upload)
-- `force` — bypass the once-per-day guard
+- `force` — bypass the 12-hour cadence guard
 
 Comments: **Reply to Comments** → Run workflow (`dry_run` to preview).
 
@@ -111,24 +114,48 @@ Comments: **Reply to Comments** → Run workflow (`dry_run` to preview).
 | `MIN_SCRIPT_WORDS` | `800` | QA floor for AI scripts |
 | `SCRIPT_RETRY_ROUNDS` | `3` | storm-resilience rounds |
 | `STORM_WAIT_SECONDS` | `900` | wait between rounds |
+| `ENABLE_CLIPS` | `1` | real-video b-roll on/off |
+| `ENABLE_YT_CLIPS` | `1` | YouTube CC source on/off |
+| `MAX_VIDEO_CLIPS` | `3` | clips per episode |
+| `CLIP_MAX_SECONDS` | `12` | length of each clip used |
+| `DEDUP_LOOKBACK_HOURS` | `60` | how long a story stays "covered" |
+| `MIN_HOURS_BETWEEN_POSTS` | `10.5` | cadence guard |
+
+## About the video clips (licensing)
+
+- **YouTube clips**: only videos published under YouTube's **Creative
+  Commons (CC-BY) license** are selected (via `search.list` with
+  `license=creativeCommons`). CC-BY allows reuse with attribution, which the
+  agent adds to every episode description. Downloads use `yt-dlp`.
+- **Wikimedia Commons**: CC0 / CC-BY / CC-BY-SA / public-domain videos only,
+  with the exact license recorded per clip.
+- **Internet Archive**: public-domain / Creative-Commons movies.
+- Every clip is trimmed to ~12 seconds, scaled, and letterboxed; the exact
+  source, author, link, and license appear in the episode description.
+- If every source fails (offline, blocked, nothing on-topic), the episode
+  gracefully falls back to slides + Ken Burns — clips are a bonus, never a
+  blocker.
+- Set `ENABLE_YT_CLIPS=0` to rely only on Commons/Archive if you prefer to
+  avoid downloading from YouTube entirely.
 
 ## Repository layout
 
 ```
 agent/
-  news.py       # RSS + HN + Reddit aggregation, ranking, dedup
-  scriptgen.py  # Gemini script (6-model fallback chain) + honest template
+  news.py       # 22 feeds (parallel) + HN + Reddit aggregation, ranking, dedup
+  scriptgen.py  # Gemini script (6-model chain) + honest template; follow-ups
   broll.py      # og:image fetching from the real articles
+  clips.py      # LEGAL video clips: YouTube CC + Wikimedia + Archive
   theme.py      # neon-tech design system (Anton + Inter, cyan/magenta)
   slides.py     # studio slides + the epic thumbnail
   tts.py        # edge-tts narration (energetic male voice)
-  video.py      # FFmpeg Ken Burns render, 1080p30 H.264 + AAC
-  youtube.py    # resumable upload, thumbnail, description builder
+  video.py      # FFmpeg render: Ken Burns slides + real clip segments
+  youtube.py    # resumable upload, thumbnail, description + attributions
   comments.py   # multilingual comment replies (Gemini)
   qa.py         # pre-upload quality gate
-  state.py      # once-per-day guard + story dedup memory
+  state.py      # 12-hour cadence guard + story dedup memory
   main.py       # orchestration
-.github/workflows/daily_news.yml    # 3 slots/day + manual dispatch
+.github/workflows/daily_news.yml    # 2 slots/day + backup + manual dispatch
 .github/workflows/reply_comments.yml# every 6h
 .github/workflows/probe.yml         # manual Gemini health check
 ```

@@ -18,6 +18,7 @@ import html
 import logging
 import re
 import xml.etree.ElementTree as ET
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
@@ -48,6 +49,9 @@ KEYWORDS = {
     "billion": 1, "funding": 1, "raise": 1, "acquisition": 1,
     "regulation": 1, "eu ai act": 2, "safety": 1, "agi": 2,
     "robot": 1, "agent": 1, "agents": 1, "video model": 2, "reasoning": 2,
+    "ai": 1, "artificial intelligence": 2, "machine learning": 2,
+    "neural network": 2, "llm": 2, "data center": 1, "datacenter": 1,
+    "chip": 1, "gpu": 1, "nvidia": 2, "semiconductor": 1,
 }
 
 
@@ -130,53 +134,62 @@ def _fetch(url: str) -> str | None:
     return None
 
 
+def _parse_one_feed(args: tuple) -> list[Story]:
+    """Fetch + parse a single RSS feed (runs in a worker thread)."""
+    label, url, weight, official, ai_filter = args
+    raw = _fetch(url)
+    if not raw:
+        log.info("feed skipped (unreachable): %s", label)
+        return []
+    try:
+        root = ET.fromstring(raw)
+    except ET.ParseError:
+        log.warning("feed skipped (bad XML): %s", label)
+        return []
+    ns_atom = ""
+    m = re.match(r"\{(.+)\}", root.tag)
+    if m:  # atom
+        ns_atom = m.group(1)
+        entries = root.findall(f"{{{ns_atom}}}entry")
+        item_title = f"{{{ns_atom}}}title"
+        item_link = f"{{{ns_atom}}}link"
+        item_sum = f"{{{ns_atom}}}summary"
+        item_content = f"{{{ns_atom}}}content"
+    else:
+        channel = root.find("channel")
+        entries = (channel.findall("item") if channel is not None
+                   else root.findall(".//item"))
+        item_title, item_link = "title", "link"
+        item_sum, item_content = "description", "content:encoded"
+    out: list[Story] = []
+    for e in entries:
+        title = (e.findtext(item_title) or "").strip()
+        link = (e.findtext(item_link) or "").strip()
+        if not link and ns_atom:
+            le = e.find(item_link)
+            link = (le.get("href") if le is not None else "") or ""
+        if not title or not link:
+            continue
+        if ai_filter and _salience(title) < 2:
+            continue  # general world feed: keep only AI-relevant headlines
+        summary = _strip_html(e.findtext(item_sum)
+                              or e.findtext(item_content) or "")
+        published = _parse_date(e, ns_atom)
+        if published is None:
+            continue  # undatable items are useless for a daily episode
+        out.append(Story(
+            title=html.unescape(title), url=link, source=label,
+            published=published, summary=summary,
+            weight=weight, official=official))
+    log.info("feed ok: %-22s %2d items", label, len(out))
+    return out
+
+
 def _rss_stories() -> list[Story]:
-    stories: list[Story] = []
-    for label, url, weight, official in FEEDS:
-        raw = _fetch(url)
-        if not raw:
-            log.info("feed skipped (unreachable): %s", label)
-            continue
-        try:
-            root = ET.fromstring(raw)
-        except ET.ParseError:
-            log.warning("feed skipped (bad XML): %s", label)
-            continue
-        ns_atom = ""
-        m = re.match(r"\{(.+)\}", root.tag)
-        if m:  # atom
-            ns_atom = m.group(1)
-            entries = root.findall(f"{{{ns_atom}}}entry")
-            item_title = f"{{{ns_atom}}}title"
-            item_link = f"{{{ns_atom}}}link"
-            item_sum = f"{{{ns_atom}}}summary"
-            item_content = f"{{{ns_atom}}}content"
-        else:
-            channel = root.find("channel")
-            entries = (channel.findall("item") if channel is not None
-                       else root.findall(".//item"))
-            item_title, item_link = "title", "link"
-            item_sum, item_content = "description", "content:encoded"
-        count = 0
-        for e in entries:
-            title = (e.findtext(item_title) or "").strip()
-            link = (e.findtext(item_link) or "").strip()
-            if not link and ns_atom:
-                le = e.find(item_link)
-                link = (le.get("href") if le is not None else "") or ""
-            if not title or not link:
-                continue
-            summary = _strip_html(e.findtext(item_sum)
-                                  or e.findtext(item_content) or "")
-            published = _parse_date(e, ns_atom)
-            if published is None:
-                continue  # undatable items are useless for a daily episode
-            stories.append(Story(
-                title=html.unescape(title), url=link, source=label,
-                published=published, summary=summary,
-                weight=weight, official=official))
-            count += 1
-        log.info("feed ok: %-22s %2d items", label, count)
+    """Fetch all feeds in parallel (6 workers) — 25 sources in ~10s."""
+    with ThreadPoolExecutor(max_workers=6) as pool:
+        results = list(pool.map(_parse_one_feed, FEEDS))
+    stories = [s for chunk in results for s in chunk]
     return stories
 
 
@@ -242,18 +255,22 @@ def _reddit_stories() -> list[Story]:
     return out
 
 
-def collect_stories(settings: Settings) -> list[Story]:
-    """Fetch everything, dedup, rank, and return the top stories."""
+def collect_stories(settings: Settings,
+                     window_hours: int | None = None) -> list[Story]:
+    """Fetch everything, dedup, rank, and return stories inside the window.
+
+    `window_hours` overrides settings.news_window_hours so callers can
+    widen the net when the fresh supply is thin (missed-news coverage).
+    """
+    window = window_hours or settings.news_window_hours
     stories = _rss_stories() + _hn_stories() + _reddit_stories()
     log.info("collected %d raw items from the web", len(stories))
     if not stories:
         return []
 
-    cutoff = datetime.now(timezone.utc) - timedelta(
-        hours=settings.news_window_hours)
+    cutoff = datetime.now(timezone.utc) - timedelta(hours=window)
     fresh = [s for s in stories if s.published >= cutoff]
-    log.info("%d items inside the %dh window", len(fresh),
-             settings.news_window_hours)
+    log.info("%d items inside the %dh window", len(fresh), window)
 
     # Cross-outlet dedup on fuzzy title overlap.
     ranked: list[Story] = []
@@ -283,14 +300,25 @@ def _similar(a: str, b: str) -> bool:
     return len(wa & wb) / min(len(wa), len(wb)) > 0.62
 
 
-def format_digest(stories: list[Story]) -> str:
-    """Human-readable digest used for logs and the Gemini prompt."""
+def format_digest(stories: list[Story],
+                  follow_ups: set[int] | None = None) -> str:
+    """Human-readable digest used for logs and the Gemini prompt.
+
+    Stories whose 1-based index is in `follow_ups` were already covered in a
+    recent episode — the digest marks them so the writer frames them as an
+    UPDATE (new angle), never an exact repeat.
+    """
+    follow_ups = follow_ups or set()
     lines = []
     for i, s in enumerate(stories, 1):
         when = s.published.strftime("%b %d, %H:%M UTC")
+        marker = ("\n  [FOLLOW-UP: this story was already covered in an "
+                  "earlier episode — frame it as a fresh UPDATE with a NEW "
+                  "angle and new details; do NOT repeat the earlier framing]"
+                  if i in follow_ups else "")
         lines.append(
             f"STORY {i}: {s.title}\n"
             f"  source: {s.source}{' (official lab blog)' if s.official else ''}"
-            f" | published: {when} | url: {s.url}\n"
+            f" | published: {when} | url: {s.url}{marker}\n"
             f"  summary: {s.summary or '(no summary provided — rely on the title)'}")
     return "\n".join(lines)

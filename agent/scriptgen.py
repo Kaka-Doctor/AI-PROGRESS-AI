@@ -43,8 +43,18 @@ SCHEMA_HINT = """{
 }"""
 
 
-def build_prompt(stories: list[Story], settings: Settings) -> str:
-    digest = format_digest(stories)
+def build_prompt(stories: list[Story], settings: Settings,
+                 follow_ups: set[int] | None = None) -> str:
+    digest = format_digest(stories, follow_ups)
+    fu_note = ""
+    if follow_ups:
+        fu_note = f"""
+FOLLOW-UP STORIES: {len(follow_ups)} of the stories below were covered in an
+earlier episode (marked [FOLLOW-UP] in the digest). For those, do NOT repeat
+the earlier framing — cover the NEW developments, a different angle, or what
+has changed since. Open them with update language like "since our last
+report" or "here's what's new on". The channel posts twice a day, so a
+recurring story must feel like progress, not a rerun."""
     return f"""You are the energetic anchor of "AI Progress Daily" — a YouTube AI-news
 channel covering every major lab: OpenAI, Anthropic, Google DeepMind, Meta,
 xAI, Mistral, and the China labs (DeepSeek, Alibaba Qwen, ByteDance, Moonshot,
@@ -52,7 +62,7 @@ Zhipu, MiniMax). The viewer wants to feel the speed of AI progress.
 
 TODAY'S REAL STORIES (from the web, most important first):
 {digest}
-
+{fu_note}
 Write the episode script with {settings.target_words}-{settings.target_words + 300} words of total
 narration — about 6-8 energetic minutes. Structure:
 
@@ -75,6 +85,9 @@ HARD RULES:
 - LENGTH (critical): total narration between {settings.target_words} and
   {settings.target_words + 300} words. Rough targets: intro 80-110; each
   story 140-200; each take 80-120; outro 50-80. At most 13 sections.
+- NO EXACT REPEATS: if a story is marked [FOLLOW-UP], give it a fresh angle
+  and explicitly signal the update; never re-state the previous episode's
+  framing word for word.
 - Tone: energetic news anchor — vivid verbs, rhythm, momentum. NO profanity,
   no doom-mongering, no "skynet" cliches. Confident optimism about progress.
 - "narration" is read aloud by a neural voice: plain speakable English. No
@@ -266,19 +279,21 @@ def _parse_script(raw: str, source: str) -> Script:
 # Headline-walk fallback (total AI outage — facts only)
 # ---------------------------------------------------------------------------
 
-def _template_script(stories: list[Story], min_words: int) -> Script:
+def _template_script(stories: list[Story], min_words: int,
+                     follow_ups: set[int] | None = None) -> Script:
     """Read the REAL headlines and summaries with energetic framing.
 
     Never invents news — every fact spoken comes from the RSS digest.
     """
+    follow_ups = follow_ups or set()
     sections = [
         Section("intro", "What Just Happened",
                 "Stop scrolling, because the world of AI did not sleep last "
                 "night. Big moves are landing from the biggest labs on the "
                 "planet, and in the next few minutes I will catch you up on "
-                "everything that matters. Let's get into today's top stories "
-                "in artificial intelligence.",
-                ["Today's top AI stories", "Big labs, big moves",
+                "everything that matters. Let's get into the top stories in "
+                "artificial intelligence right now.",
+                ["The latest AI stories", "Big labs, big moves",
                  "Let's go"]),
     ]
     for i, s in enumerate(stories, 1):
@@ -287,6 +302,9 @@ def _template_script(stories: list[Story], min_words: int) -> Script:
         narration = (
             f"Story number {i}. {s.title}. That is the headline from {src}, "
             f"{s.published.strftime('released %B %d')}. ")
+        if i in follow_ups:
+            narration += ("You may remember this one from our earlier report — "
+                          "here is the latest chapter in the story. ")
         if s.summary:
             narration += f"Here is what we know so far. {s.summary} "
         narration += (
@@ -368,12 +386,14 @@ def _template_script(stories: list[Story], min_words: int) -> Script:
 # Public entry point
 # ---------------------------------------------------------------------------
 
-def generate_script(stories: list[Story], settings: Settings) -> Script:
+def generate_script(stories: list[Story], settings: Settings,
+                    follow_ups: set[int] | None = None) -> Script:
     if not settings.gemini_api_key:
         log.warning("No GEMINI_API_KEY — using headline-walk template.")
-        return _template_script(stories, settings.min_template_words)
+        return _template_script(stories, settings.min_template_words,
+                                follow_ups)
 
-    prompt = build_prompt(stories, settings)
+    prompt = build_prompt(stories, settings, follow_ups)
     min_words = settings.min_script_words
     best: Script | None = None
     for draft in range(1, MAX_DRAFTS + 1):
@@ -408,4 +428,4 @@ def generate_script(stories: list[Story], settings: Settings) -> Script:
         return best
     log.error("Gemini failed completely — falling back to the honest "
               "headline-walk script (facts read straight from the feeds).")
-    return _template_script(stories, settings.min_template_words)
+    return _template_script(stories, settings.min_template_words, follow_ups)

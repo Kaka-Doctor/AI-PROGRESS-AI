@@ -30,20 +30,35 @@ def _get(key: str, default: str = "") -> str:
 
 
 # Official lab blogs + aggregators that cover every major US/China lab.
-# Each entry: (source label, feed URL, weight 1-10, official?)
-FEEDS: list[tuple[str, str, int, bool]] = [
-    ("OpenAI", "https://openai.com/news/rss.xml", 10, True),
-    ("Google DeepMind", "https://deepmind.google/blog/rss.xml", 10, True),
-    ("Google AI", "https://blog.google/technology/ai/rss/", 9, True),
-    ("Qwen (Alibaba)", "https://qwenlm.github.io/blog/index.xml", 9, True),
-    ("Hugging Face", "https://huggingface.co/blog/feed.xml", 8, True),
-    ("TechCrunch AI", "https://techcrunch.com/category/artificial-intelligence/feed/", 7, False),
-    ("The Verge AI", "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml", 7, False),
-    ("Ars Technica AI", "https://arstechnica.com/ai/feed/", 7, False),
-    ("MIT Tech Review", "https://www.technologyreview.com/topic/artificial-intelligence/feed", 7, False),
-    ("Wired AI", "https://www.wired.com/feed/tag/ai/latest/rss", 6, False),
-    ("VentureBeat AI", "https://venturebeat.com/category/ai/feed/", 6, False),
-    ("SCMP Tech", "https://www.scmp.com/rss/4/feed", 5, False),
+# Each entry: (source label, feed URL, weight 1-10, official?, ai_filter?)
+# ai_filter=True → keep only items whose title matches AI keywords
+# (used for general tech/world feeds where only part of the output is AI).
+FEEDS: list[tuple[str, str, int, bool, bool]] = [
+    # --- official lab / research blogs -----------------------------------
+    ("OpenAI", "https://openai.com/news/rss.xml", 10, True, False),
+    ("Google DeepMind", "https://deepmind.google/blog/rss.xml", 10, True, False),
+    ("Google AI", "https://blog.google/technology/ai/rss/", 9, True, False),
+    ("Google Research", "https://research.google/blog/rss/", 9, True, False),
+    ("Qwen (Alibaba)", "https://qwenlm.github.io/blog/index.xml", 9, True, False),
+    ("Hugging Face", "https://huggingface.co/blog/feed.xml", 8, True, False),
+    ("NVIDIA", "https://blogs.nvidia.com/feed/", 8, True, False),
+    ("Berkeley BAIR", "https://bair.berkeley.edu/blog/feed.xml", 7, True, False),
+    # --- dedicated AI media -------------------------------------------------
+    ("The Decoder", "https://the-decoder.com/feed/", 8, False, False),
+    ("MIT News AI", "https://news.mit.edu/topic/mitartificial-intelligence2-rss.xml", 7, False, False),
+    ("TechCrunch AI", "https://techcrunch.com/category/artificial-intelligence/feed/", 7, False, False),
+    ("The Verge AI", "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml", 7, False, False),
+    ("Ars Technica AI", "https://arstechnica.com/ai/feed/", 7, False, False),
+    ("MIT Tech Review", "https://www.technologyreview.com/topic/artificial-intelligence/feed", 7, False, False),
+    ("ZDNet AI", "https://www.zdnet.com/topic/artificial-intelligence/rss.xml", 6, False, False),
+    ("Wired AI", "https://www.wired.com/feed/tag/ai/latest/rss", 6, False, False),
+    ("VentureBeat AI", "https://venturebeat.com/category/ai/feed/", 6, False, False),
+    # --- world coverage (keyword-filtered general feeds) -------------------
+    ("BBC Tech (UK)", "https://feeds.bbci.co.uk/news/technology/rss.xml", 6, False, True),
+    ("Guardian Tech (UK)", "https://www.theguardian.com/uk/technology/rss", 6, False, True),
+    ("SCMP Tech (China)", "https://www.scmp.com/rss/4/feed", 5, False, True),
+    ("TOI Tech (India)", "https://timesofindia.indiatimes.com/rssfeeds/66949542.cms", 5, False, True),
+    ("Al Jazeera (MENA)", "https://www.aljazeera.com/xml/rss/all.xml", 4, False, True),
 ]
 
 # Trending signals (parsed differently from RSS).
@@ -60,12 +75,24 @@ class Settings:
     # --- Content -----------------------------------------------------------
     style: str = "neon_tech"          # slide theme
     max_stories: int = 5              # stories per episode
-    news_window_hours: int = 48       # only consider items newer than this
+    news_window_hours: int = 36       # primary window (2x daily cadence)
+    news_window_wide_hours: int = 72  # widened window when supply is thin
     target_words: int = 1100          # ~7 minutes of energetic narration
     voice: str = "en-US-AndrewNeural" # energetic male news voice
     tts_rate: str = "+8%"             # energetic, faster-than-devotional
     ken_burns: bool = True
-    dedup_lookback_days: int = 4      # skip stories covered recently
+    dedup_lookback_hours: int = 60    # stories covered in the last 60h are
+                                      # excluded; 2 episodes/day x 5 stories
+
+    # --- Posting cadence ---------------------------------------------------
+    min_hours_between_posts: float = 10.5  # 2 slots/day, 12h apart, tolerant
+                                           # of GitHub cron delays
+
+    # --- Legal video clips (not just slides) --------------------------------
+    enable_clips: bool = True
+    max_video_clips: int = 3           # per episode (render-time budget)
+    clip_max_seconds: float = 12.0     # trim length of each clip used
+    enable_yt_clips: bool = True       # YouTube Creative-Commons search+cut
 
     # --- Branding ----------------------------------------------------------
     channel_name: str = "AI Progress AI"
@@ -120,12 +147,19 @@ class Settings:
         return cls(
             style=get("VIDEO_STYLE", "neon_tech"),
             max_stories=int(get("MAX_STORIES", "5") or 5),
-            news_window_hours=int(get("NEWS_WINDOW_HOURS", "48") or 48),
+            news_window_hours=int(get("NEWS_WINDOW_HOURS", "36") or 36),
+            news_window_wide_hours=int(get("NEWS_WINDOW_WIDE_HOURS", "72") or 72),
             target_words=int(get("TARGET_WORDS", "1100") or 1100),
             voice=get("VOICE", "en-US-AndrewNeural"),
             tts_rate=get("TTS_RATE", "+8%"),
             ken_burns=_bool(get("KEN_BURNS"), True),
-            dedup_lookback_days=int(get("DEDUP_LOOKBACK_DAYS", "4") or 4),
+            dedup_lookback_hours=int(get("DEDUP_LOOKBACK_HOURS", "60") or 60),
+            min_hours_between_posts=float(
+                get("MIN_HOURS_BETWEEN_POSTS", "10.5") or 10.5),
+            enable_clips=_bool(get("ENABLE_CLIPS"), True),
+            max_video_clips=int(get("MAX_VIDEO_CLIPS", "3") or 3),
+            clip_max_seconds=float(get("CLIP_MAX_SECONDS", "12") or 12),
+            enable_yt_clips=_bool(get("ENABLE_YT_CLIPS"), True),
             channel_name=get("CHANNEL_NAME", "AI Progress AI"),
             channel_handle=get("CHANNEL_HANDLE", "@AIPROGRESSAI"),
             channel_url=get("CHANNEL_URL",
