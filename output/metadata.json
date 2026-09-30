@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-30T21:32:37+00:00",
-  "title": "Google Drops Gemini 4 Argon But You Can't Use It Yet | AI Progress Daily",
-  "description": "Google DeepMind has officially unveiled its next-generation frontier intelligence model, Gemini 4 Argon. Plus, we cover the launch of Magnitude, a self-optimizing local agent inference engine, and DoorDash's brand new text-to-order AI agent.\n\nTODAY'S STORIES\n\u2022 Gemini 4 Argon: our next era of frontier intelligence \u2014 Google DeepMind (deepmind.google)\n\u2022 Launch HN: Magnitude (YC S25) \u2013 Self-optimizing inference engine for agents \u2014 Hacker News (github.com)\n\u2022 Google announces Gemini 4 and says it\u2019s so",
+  "generated_at": "2026-09-30T21:49:25+00:00",
+  "title": "Google Drops Gemini 4 Argon as OpenAI Unveils Huge Upgrades | AI News",
+  "description": "Google DeepMind enters its next era of frontier intelligence with Gemini 4 Argon. Meanwhile, OpenAI exposes a coordinated adversarial distillation campaign, recaps massive DevDay 2026 releases including GPT-6 Astra, and brings local agent acceleration into hyperdrive.\n\nSTORIES COVERED\n\u2022 Gemini 4 Argon: our next era of frontier intelligence \u2014 Google DeepMind (deepmind.google)\n\u2022 Disrupting a coordinated model-distillation campaign \u2014 OpenAI (openai.com)\n\u2022 Helping small businesses put AI to work \u2014 O",
   "tags": [
     "AI news",
     "artificial intelligence",
@@ -19,60 +19,77 @@
     "next",
     "frontier",
     "intelligence",
-    "Launch",
-    "Magnitude",
-    "inference",
-    "engine",
-    "agents",
-    "Google",
-    "announces",
-    "Gemini",
-    "says",
-    "capable",
-    "only",
-    "cyber",
-    "have",
-    "right"
+    "Disrupting",
+    "coordinated",
+    "campaign",
+    "Helping",
+    "small",
+    "businesses",
+    "work"
   ],
   "stories": [
     {
       "title": "Gemini 4 Argon: our next era of frontier intelligence",
       "source": "Google DeepMind",
       "url": "https://deepmind.google/blog/gemini-4-argon-our-next-era-of-frontier-intelligence/",
-      "score": 67.5
+      "score": 67.4
+    },
+    {
+      "title": "Disrupting a coordinated model-distillation campaign",
+      "source": "OpenAI",
+      "url": "https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign",
+      "score": 64.2
+    },
+    {
+      "title": "Helping small businesses put AI to work",
+      "source": "OpenAI",
+      "url": "https://openai.com/index/helping-small-businesses-put-ai-to-work",
+      "score": 62.1
+    },
+    {
+      "title": "DevDay 2026 Recap",
+      "source": "OpenAI",
+      "url": "https://openai.com/index/devday-2026-recap",
+      "score": 62.1
     },
     {
       "title": "Launch HN: Magnitude (YC S25) \u2013 Self-optimizing inference engine for agents",
       "source": "Hacker News",
       "url": "https://github.com/magnitudedev/magnitude",
-      "score": 58.0
-    },
-    {
-      "title": "Google announces Gemini 4 and says it\u2019s so capable that only \u2018trusted cyber defenders\u2019 can have it right now",
-      "source": "The Verge AI",
-      "url": "https://www.theverge.com/tech/1002980/google-gemini-4-argon",
-      "score": 55.8
-    },
-    {
-      "title": "Google announces Gemini 4 Argon AI model, but you can't use it yet",
-      "source": "Ars Technica AI",
-      "url": "https://arstechnica.com/google/2026/09/google-announces-gemini-4-argon-ai-model-but-you-cant-use-it-yet/",
-      "score": 52.6
-    },
-    {
-      "title": "DoorDash launches an AI agent you can text to order food",
-      "source": "TechCrunch AI",
-      "url": "https://techcrunch.com/2026/09/30/doordash-launches-an-ai-agent-you-can-text-to-order-food/",
-      "score": 51.2
+      "score": 61.0
     }
   ],
-  "video_id": "hi4YAFXH-TU",
-  "video_url": "https://youtu.be/hi4YAFXH-TU",
-  "video_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_09_30.mp4",
-  "thumbnail_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_09_30_thumb.jpg",
-  "duration_seconds": 367.5,
-  "script_source": "gemini:gemini-3.5-flash",
-  "script_words": 998,
+  "follow_ups": [],
+  "clips": [
+    {
+      "story": 1,
+      "provider": "commons",
+      "title": "AI generated video clip -New creative video.webm",
+      "url": "https://commons.wikimedia.org/wiki/File:AI_generated_video_clip_-New_creative_video.webm",
+      "license": "Wikimedia Commons (CC BY-SA 4.0)"
+    },
+    {
+      "story": 2,
+      "provider": "commons",
+      "title": "AI generated Video Clip.webm",
+      "url": "https://commons.wikimedia.org/wiki/File:AI_generated_Video_Clip.webm",
+      "license": "Wikimedia Commons (CC BY-SA 4.0)"
+    },
+    {
+      "story": 3,
+      "provider": "commons",
+      "title": "AI Stock Analyser.webm",
+      "url": "https://commons.wikimedia.org/wiki/File:AI_Stock_Analyser.webm",
+      "license": "Wikimedia Commons (CC0)"
+    }
+  ],
+  "video_id": "",
+  "video_url": "",
+  "video_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_09_30_2147.mp4",
+  "thumbnail_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_09_30_2147_thumb.jpg",
+  "duration_seconds": 335.8,
+  "script_source": "gemini:gemini-3.7-flash",
+  "script_words": 802,
   "qa_passed": true,
-  "uploaded": true
+  "uploaded": false
 }
