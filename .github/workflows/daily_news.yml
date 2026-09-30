@@ -1,0 +1,123 @@
+name: Daily AI News Video
+
+on:
+  schedule:
+    # Three daily slots (all safe thanks to the once-per-day guard in
+    # agent/main.py — exactly one episode per EAT calendar day, ever):
+    #   09:15 UTC = 12:15 EAT  (lunch-time safety net)
+    #   17:15 UTC = 20:15 EAT  (primary: US announcements are in, TZ evening)
+    #   18:45 UTC = 21:45 EAT  (backup if the primary was delayed/failed)
+    # GitHub cron can be delayed by hours; spread slots maximize the chance
+    # one lands while Gemini is healthy and the news day is complete.
+    - cron: "15 9 * * *"
+    - cron: "15 17 * * *"
+    - cron: "45 18 * * *"
+  workflow_dispatch:
+    inputs:
+      no_upload:
+        description: "Dry run — render but do not upload to YouTube"
+        type: boolean
+        default: false
+      force:
+        description: "Bypass the once-per-day guard (post even if today's episode is already live)"
+        type: boolean
+        default: false
+
+# The job pushes state.json back to the repo after each successful upload.
+permissions:
+  contents: write
+
+# Never run two generations at once.
+concurrency:
+  group: daily-news
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    # 90 min: storm-resilience can wait 2 × 15 min between script retries,
+    # plus generation sweeps, render and upload time.
+    timeout-minutes: 90
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Ensure FFmpeg
+        run: |
+          if ! command -v ffmpeg >/dev/null 2>&1; then
+            sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          fi
+          ffmpeg -version | head -n1
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Preflight — Gemini models available today
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          curl -s -m 30 -H "x-goog-api-key: $GEMINI_API_KEY" \
+            "https://generativelanguage.googleapis.com/v1beta/models?pageSize=200" \
+            | python3 -c "
+          import json, sys
+          try:
+              d = json.load(sys.stdin)
+              names = sorted(m['name'].split('/')[-1] for m in d.get('models', []))
+              flash = [n for n in names if 'flash' in n.lower()]
+              print('flash models:', ', '.join(flash) or '(none)')
+          except Exception as exc:
+              print('model listing failed:', exc)
+          "
+
+      - name: Generate today's episode
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          YT_PRIVACY: ${{ vars.YT_PRIVACY || 'public' }}
+          VOICE: ${{ vars.VOICE || 'en-US-AndrewNeural' }}
+          TTS_RATE: ${{ vars.TTS_RATE || '+8%' }}
+          MAX_STORIES: ${{ vars.MAX_STORIES || '5' }}
+          FORCE_UPLOAD: ${{ (github.event_name == 'workflow_dispatch'
+                        && (inputs.force == true || inputs.force == 'true')) && 'true' || '' }}
+          DRY_RUN: ${{ (github.event_name == 'workflow_dispatch'
+                        && (inputs.no_upload == true || inputs.no_upload == 'true')) && 'true' || '' }}
+          SCRIPT_RETRY_ROUNDS: ${{ vars.SCRIPT_RETRY_ROUNDS || '3' }}
+          STORM_WAIT_SECONDS: ${{ vars.STORM_WAIT_SECONDS || '900' }}
+        run: python -m agent.main
+
+      - name: Save episode as workflow artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-news-${{ github.run_id }}
+          path: |
+            output/*.mp4
+            output/*_thumb.jpg
+            output/metadata.json
+            output/last_script.json
+            output/qa_report.json
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Persist state (posted episodes + story dedup memory)
+        run: |
+          git config user.name "ai-progress-agent[bot]"
+          git config user.email "actions@users.noreply.github.com"
+          git add state.json comments_state.json output/metadata.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No state change to commit."
+          else
+            git commit -m "chore: episode state after run $(date -u +%F)"
+            # Another push may have landed after checkout (e.g. comment-state
+            # commit or a manual push) — rebase ours on top and retry.
+            git pull --rebase origin main
+            git push
+          fi

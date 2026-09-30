@@ -1,0 +1,41 @@
+name: Gemini Probe
+
+# Diagnostic tool: checks which Gemini models the API key can actually call
+# right now (generateContent with a tiny prompt). Run it any time from the
+# Actions tab → "Gemini Probe" → Run workflow.
+
+on:
+  workflow_dispatch:
+    inputs:
+      models:
+        description: "Comma-separated model names to test"
+        required: false
+        default: "gemini-3.7-flash,gemini-flash-latest,gemini-3.5-flash,gemini-3.6-flash,gemini-3.8-flash,gemini-3.1-flash-lite,gemini-2.5-flash"
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Probe each model with a minimal generateContent call
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          MODELS: ${{ github.event.inputs.models || 'gemini-3.7-flash,gemini-flash-latest,gemini-3.5-flash,gemini-3.6-flash,gemini-3.8-flash' }}
+        run: |
+          echo "Probing models: $MODELS"
+          for m in $(echo "$MODELS" | tr ',' ' '); do
+            code=$(curl -s -o "$RUNNER_TEMP/resp.json" -w "%{http_code}" -m 60 -X POST \
+              "https://generativelanguage.googleapis.com/v1beta/models/$m:generateContent" \
+              -H "x-goog-api-key: $GEMINI_API_KEY" \
+              -H "Content-Type: application/json" \
+              -d '{"contents":[{"parts":[{"text":"Reply with exactly: OK"}]}]}')
+            if [ "$code" = "200" ]; then
+              verdict="WORKS"
+            elif [ "$code" = "429" ] || [ "$code" = "503" ]; then
+              verdict="LIVE-BUT-BUSY (retryable)"
+            else
+              verdict="NOT CALLABLE"
+            fi
+            echo "$m -> HTTP $code : $verdict"
+            sleep 3
+          done

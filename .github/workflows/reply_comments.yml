@@ -1,0 +1,70 @@
+name: Reply to Comments
+
+on:
+  schedule:
+    # 4x daily: 00:40, 06:40, 12:40, 18:40 UTC
+    #          = 03:40, 09:40, 15:40, 21:40 EAT — viewers get answers fast.
+    - cron: "40 */6 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "List comments and draft replies without posting"
+        type: boolean
+        default: false
+      max_replies:
+        description: "Max replies this run (blank = 10)"
+        required: false
+        default: ""
+
+# The job pushes comments_state.json back so replies are never duplicated.
+permissions:
+  contents: write
+
+# Never run two reply passes at once.
+concurrency:
+  group: reply-comments
+  cancel-in-progress: false
+
+jobs:
+  reply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Reply to new comments
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          MAX_COMMENT_REPLIES: ${{ github.event.inputs.max_replies || vars.MAX_COMMENT_REPLIES || '10' }}
+          COMMENT_MAX_AGE_DAYS: ${{ vars.COMMENT_MAX_AGE_DAYS || '90' }}
+          DRY_RUN: ${{ (github.event_name == 'workflow_dispatch'
+                        && (inputs.dry_run == true || inputs.dry_run == 'true')) && 'true' || '' }}
+        run: python -m agent.comments
+
+      - name: Persist comment-reply state
+        run: |
+          git config user.name "ai-progress-agent[bot]"
+          git config user.email "actions@users.noreply.github.com"
+          git add comments_state.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No comment state change to commit."
+          else
+            git commit -m "chore: update comment-reply state $(date -u +%FT%TZ)"
+            # Another push may have landed after checkout (e.g. the daily
+            # video's state commit) — rebase ours on top and retry.
+            git pull --rebase origin main
+            git push
+          fi
