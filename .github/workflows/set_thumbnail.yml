@@ -1,0 +1,39 @@
+name: Set Thumbnail
+
+# (Re-)apply the epic custom thumbnail to a video. Custom thumbnails need a
+# VERIFIED channel (https://www.youtube.com/verify) — if the channel is not
+# yet verified this fails with 403; simply re-run it after verifying.
+on:
+  workflow_dispatch:
+    inputs:
+      video_id:
+        description: "Video id (blank = latest episode from state.json)"
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  set-thumb:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Apply thumbnail
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          VIDEO_ID: ${{ inputs.video_id }}
+        run: python scripts/set_thumb.py

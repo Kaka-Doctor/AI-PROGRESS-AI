@@ -43,6 +43,21 @@ retries script generation up to 3 rounds ~15 minutes apart, across a
 6-model fallback chain. The last resort is a **headline-walk episode** that
 reads the real RSS headlines and summaries — it never invents news.
 
+## Custom thumbnails need a verified channel (one-time, 1 minute)
+
+YouTube only allows custom thumbnails on **verified channels**. Until the
+channel is verified, thumbnail uploads return 403 and YouTube falls back to
+an auto-picked frame (the episode itself is unaffected). Verify once:
+
+1. Open **https://www.youtube.com/verify** signed in as the channel's Google
+   account.
+2. Enter the received phone code.
+
+From then on every new episode gets its epic thumbnail automatically. To
+re-apply it to an episode uploaded before verifying, run the
+**Set Thumbnail** workflow (`.github/workflows/set_thumbnail.yml`) — with a
+blank `video_id` it targets the latest episode from `state.json`.
+
 ## Setup (one-time)
 
 Four repository secrets (Settings → Secrets and variables → Actions):
