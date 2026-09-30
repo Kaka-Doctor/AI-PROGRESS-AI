@@ -111,7 +111,12 @@ jobs:
         run: |
           git config user.name "ai-progress-agent[bot]"
           git config user.email "actions@users.noreply.github.com"
-          git add state.json comments_state.json output/metadata.json 2>/dev/null || true
+          # add each file individually: a single multi-path `git add` fails
+          # ENTIRELY when one pathspec (e.g. comments_state.json on a fresh
+          # repo) does not exist yet, silently staging nothing.
+          for f in state.json comments_state.json output/metadata.json; do
+            if [ -f "$f" ]; then git add "$f" 2>/dev/null || true; fi
+          done
           if git diff --cached --quiet; then
             echo "No state change to commit."
           else
