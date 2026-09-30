@@ -34,10 +34,10 @@ SCHEMA_HINT = """{
   "description": "2-3 sentence episode summary for YouTube (no hashtags)",
   "sections": [
     {"type": "intro",  "title": "What Just Happened",       "narration": "...", "on_screen": ["short phrase", "short phrase"]},
-    {"type": "story",  "title": "Story 1 title",            "narration": "...", "on_screen": ["...", "...", "..."]},
-    {"type": "take",   "title": "Why Story 1 Matters",      "narration": "...", "on_screen": ["...", "..."]},
-    {"type": "story",  "title": "Story 2 title",            "narration": "...", "on_screen": ["...", "...", "..."]},
-    {"type": "take",   "title": "Why Story 2 Matters",      "narration": "...", "on_screen": ["...", "..."]},
+    {"type": "story",  "title": "Story 1 title",            "story_index": 1, "narration": "...", "on_screen": ["...", "...", "..."]},
+    {"type": "take",   "title": "Why Story 1 Matters",      "story_index": 1, "narration": "...", "on_screen": ["...", "..."]},
+    {"type": "story",  "title": "Story 2 title",            "story_index": 2, "narration": "...", "on_screen": ["...", "...", "..."]},
+    {"type": "take",   "title": "Why Story 2 Matters",      "story_index": 2, "narration": "...", "on_screen": ["...", "..."]},
     {"type": "outro",  "title": "Stay Ahead",               "narration": "...", "on_screen": []}
   ]
 }"""
@@ -94,8 +94,10 @@ HARD RULES:
   markdown, no emojis, no parentheses, no URLs.
 - Story order in the script must match the digest priority order.
 - "title" of story sections: a short catchy label (3-6 words), not the full
-  headline. "on_screen": 2-4 ultra-short phrases (max ~7 words), title case,
-  no ending punctuation.
+  headline. "story_index": the 1-based digest story this section covers
+  (1 for STORY 1, 2 for STORY 2...) — take sections carry the index of the
+  story they follow. "on_screen": 2-4 ultra-short phrases (max ~7 words),
+  title case, no ending punctuation.
 - "thumbnail_text": 3-6 words that sell the biggest story, ALL-CAPS energy
   (e.g. "GPT-5 JUST LEAKED?!").
 - "title" (YouTube): under 95 chars, energetic but truthful, end with the
@@ -244,6 +246,18 @@ class Script:
             cleaned[0].type = "intro"
         if cleaned[-1].type != "outro":
             cleaned.append(Section("outro", "Stay Ahead", "", []))
+        # Story sections must carry a valid 1-based story_index — Gemini
+        # often omits the field (it defaults to 0), which would silently
+        # detach b-roll images and video clips from their sections. Assign
+        # sequentially: the Nth story section covers the Nth digest story.
+        story_seen = 0
+        for sec in cleaned:
+            if sec.type == "story":
+                story_seen += 1
+                if not (1 <= sec.story_index <= 99):
+                    sec.story_index = story_seen
+            elif sec.type == "take" and not (1 <= sec.story_index <= 99):
+                sec.story_index = story_seen  # the story it follows (0 if none yet)
         self.sections = cleaned
         self.hook = (self.hook or "").strip()
         self.thumbnail_text = (self.thumbnail_text or "").strip()[:40]
