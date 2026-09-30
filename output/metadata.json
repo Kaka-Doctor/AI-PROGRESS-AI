@@ -1,0 +1,78 @@
+{
+  "generated_at": "2026-09-30T21:32:37+00:00",
+  "title": "Google Drops Gemini 4 Argon But You Can't Use It Yet | AI Progress Daily",
+  "description": "Google DeepMind has officially unveiled its next-generation frontier intelligence model, Gemini 4 Argon. Plus, we cover the launch of Magnitude, a self-optimizing local agent inference engine, and DoorDash's brand new text-to-order AI agent.\n\nTODAY'S STORIES\n\u2022 Gemini 4 Argon: our next era of frontier intelligence \u2014 Google DeepMind (deepmind.google)\n\u2022 Launch HN: Magnitude (YC S25) \u2013 Self-optimizing inference engine for agents \u2014 Hacker News (github.com)\n\u2022 Google announces Gemini 4 and says it\u2019s so",
+  "tags": [
+    "AI news",
+    "artificial intelligence",
+    "AI",
+    "machine learning",
+    "daily AI news",
+    "OpenAI",
+    "Anthropic",
+    "Google DeepMind",
+    "DeepSeek",
+    "AI progress",
+    "AI Progress AI",
+    "Gemini",
+    "Argon",
+    "next",
+    "frontier",
+    "intelligence",
+    "Launch",
+    "Magnitude",
+    "inference",
+    "engine",
+    "agents",
+    "Google",
+    "announces",
+    "Gemini",
+    "says",
+    "capable",
+    "only",
+    "cyber",
+    "have",
+    "right"
+  ],
+  "stories": [
+    {
+      "title": "Gemini 4 Argon: our next era of frontier intelligence",
+      "source": "Google DeepMind",
+      "url": "https://deepmind.google/blog/gemini-4-argon-our-next-era-of-frontier-intelligence/",
+      "score": 67.5
+    },
+    {
+      "title": "Launch HN: Magnitude (YC S25) \u2013 Self-optimizing inference engine for agents",
+      "source": "Hacker News",
+      "url": "https://github.com/magnitudedev/magnitude",
+      "score": 58.0
+    },
+    {
+      "title": "Google announces Gemini 4 and says it\u2019s so capable that only \u2018trusted cyber defenders\u2019 can have it right now",
+      "source": "The Verge AI",
+      "url": "https://www.theverge.com/tech/1002980/google-gemini-4-argon",
+      "score": 55.8
+    },
+    {
+      "title": "Google announces Gemini 4 Argon AI model, but you can't use it yet",
+      "source": "Ars Technica AI",
+      "url": "https://arstechnica.com/google/2026/09/google-announces-gemini-4-argon-ai-model-but-you-cant-use-it-yet/",
+      "score": 52.6
+    },
+    {
+      "title": "DoorDash launches an AI agent you can text to order food",
+      "source": "TechCrunch AI",
+      "url": "https://techcrunch.com/2026/09/30/doordash-launches-an-ai-agent-you-can-text-to-order-food/",
+      "score": 51.2
+    }
+  ],
+  "video_id": "hi4YAFXH-TU",
+  "video_url": "https://youtu.be/hi4YAFXH-TU",
+  "video_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_09_30.mp4",
+  "thumbnail_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_09_30_thumb.jpg",
+  "duration_seconds": 367.5,
+  "script_source": "gemini:gemini-3.5-flash",
+  "script_words": 998,
+  "qa_passed": true,
+  "uploaded": true
+}
