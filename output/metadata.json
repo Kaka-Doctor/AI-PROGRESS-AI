@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-30T21:49:25+00:00",
-  "title": "Google Drops Gemini 4 Argon as OpenAI Unveils Huge Upgrades | AI News",
-  "description": "Google DeepMind enters its next era of frontier intelligence with Gemini 4 Argon. Meanwhile, OpenAI exposes a coordinated adversarial distillation campaign, recaps massive DevDay 2026 releases including GPT-6 Astra, and brings local agent acceleration into hyperdrive.\n\nSTORIES COVERED\n\u2022 Gemini 4 Argon: our next era of frontier intelligence \u2014 Google DeepMind (deepmind.google)\n\u2022 Disrupting a coordinated model-distillation campaign \u2014 OpenAI (openai.com)\n\u2022 Helping small businesses put AI to work \u2014 O",
+  "generated_at": "2026-09-30T22:00:37+00:00",
+  "title": "Google DeepMind Drops Gemini 4 Argon As OpenAI Unleashes DevDay | AI News",
+  "description": "Google DeepMind officially announces Gemini 4 Argon to usher in a new era of frontier intelligence. Plus, OpenAI unveils massive updates at DevDay 2026 including GPT-6 Astra, cracking down on distillation, and empowering small businesses.\n\nSTORIES COVERED\n\u2022 Gemini 4 Argon: our next era of frontier intelligence \u2014 Google DeepMind (deepmind.google)\n\u2022 Disrupting a coordinated model-distillation campaign \u2014 OpenAI (openai.com)\n\u2022 Helping small businesses put AI to work \u2014 OpenAI (openai.com)\n\u2022 DevDay 20",
   "tags": [
     "AI news",
     "artificial intelligence",
@@ -44,13 +44,13 @@
       "title": "Helping small businesses put AI to work",
       "source": "OpenAI",
       "url": "https://openai.com/index/helping-small-businesses-put-ai-to-work",
-      "score": 62.1
+      "score": 62.0
     },
     {
       "title": "DevDay 2026 Recap",
       "source": "OpenAI",
       "url": "https://openai.com/index/devday-2026-recap",
-      "score": 62.1
+      "score": 62.0
     },
     {
       "title": "Launch HN: Magnitude (YC S25) \u2013 Self-optimizing inference engine for agents",
@@ -85,11 +85,11 @@
   ],
   "video_id": "",
   "video_url": "",
-  "video_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_09_30_2147.mp4",
-  "thumbnail_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_09_30_2147_thumb.jpg",
-  "duration_seconds": 335.8,
-  "script_source": "gemini:gemini-3.7-flash",
-  "script_words": 802,
+  "video_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_09_30_2158.mp4",
+  "thumbnail_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_09_30_2158_thumb.jpg",
+  "duration_seconds": 360.4,
+  "script_source": "gemini:gemini-3.6-flash",
+  "script_words": 885,
   "qa_passed": true,
   "uploaded": false
 }
