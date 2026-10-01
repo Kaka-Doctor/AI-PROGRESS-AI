@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-01T04:55:17+00:00",
-  "title": "Google Gemini 4 Argon Launches, FTC Targets AI Labs, and Zhipu Exploit Fears | Google",
-  "description": "Google returns to frontier AI with the launch of Gemini 4 Argon, while DeepMind introduces biological watermarking with SynthID Bio. Meanwhile, the FTC opens a sweeping investigation into major labs, and new cybersecurity findings highlight open-weight risks.\n\nSTORIES COVERED\n\u2022 Google Gemini 4 Argon closes the gap with OpenAI and Anthropic but doesn't take a clear lead \u2014 The Decoder (the-decoder.com)\n\u2022 Introducing SynthID Bio \u2014 Google DeepMind (deepmind.google)\n\u2022 From Training to Production, NVI",
+  "generated_at": "2026-10-01T22:50:55+00:00",
+  "title": "Open Source Drops RL Decision Platform as Coding Agents Surge | OpenAI",
+  "description": "Today on AI Progress Daily, Cloudflare reveals Clef, a new open-source decision model and RL fine-tuning platform. Plus, Weave Router 2.0 slashes coding agent costs while matching Astra-level performance, and OpenAI showcases major real-world enterprise breakthroughs.\n\nSTORIES COVERED\n\u2022 Clef: Open-source decision models, and new RL fine-tuning platform \u2014 Hacker News (blog.cloudflare.com)\n\u2022 How Albertsons Companies is reimagining retail from the inside out \u2014 OpenAI (openai.com)\n\u2022 Show HN: Open-so",
   "tags": [
     "AI news",
     "artificial intelligence",
@@ -14,55 +14,52 @@
     "DeepSeek",
     "AI progress",
     "AI Progress AI",
-    "Google",
-    "Gemini",
-    "Argon",
-    "closes",
-    "OpenAI",
-    "Anthropic",
-    "take",
-    "clear",
-    "lead",
-    "Introducing",
-    "SynthID",
-    "Training",
-    "Production",
-    "NVIDIA",
-    "CoreWeave",
-    "Close",
-    "Loop",
-    "Agentic"
+    "Clef",
+    "decision",
+    "models",
+    "platform",
+    "Albertsons",
+    "Companies",
+    "reimagining",
+    "retail",
+    "inside",
+    "Show",
+    "model",
+    "routing",
+    "coding",
+    "agents",
+    "performance"
   ],
   "stories": [
     {
-      "title": "Google Gemini 4 Argon closes the gap with OpenAI and Anthropic but doesn't take a clear lead",
-      "source": "The Decoder",
-      "url": "https://the-decoder.com/google-gemini-4-argon-closes-the-gap-with-openai-and-anthropic-but-doesnt-take-a-clear-lead/",
-      "score": 62.7
+      "title": "Clef: Open-source decision models, and new RL fine-tuning platform",
+      "source": "Hacker News",
+      "url": "https://blog.cloudflare.com/clef-decision-models/",
+      "score": 72.0
     },
     {
-      "title": "Introducing SynthID Bio",
-      "source": "Google DeepMind",
-      "url": "https://deepmind.google/blog/introducing-synthid-bio/",
-      "score": 61.4
+      "title": "How Albertsons Companies is reimagining retail from the inside out",
+      "source": "OpenAI",
+      "url": "https://openai.com/index/albertsons-reimagining-retail",
+      "score": 71.8
     },
     {
-      "title": "From Training to Production, NVIDIA and CoreWeave Close the Loop on Agentic AI",
-      "source": "NVIDIA",
-      "url": "https://blogs.nvidia.com/blog/coreweave-agentic-ai-vera-rubin/",
-      "score": 58.4
+      "title": "Show HN: Open-source model routing for coding agents at Astra-level performance",
+      "source": "Hacker News",
+      "url": "https://news.ycombinator.com/item?id=49911500",
+      "score": 67.0
     },
     {
-      "title": "FTC launches sweeping probe into OpenAI, Anthropic, and other AI labs over consumer protection concerns",
-      "source": "The Decoder",
-      "url": "https://the-decoder.com/ftc-launches-sweeping-probe-into-openai-anthropic-and-other-ai-labs-over-consumer-protection-concerns/",
-      "score": 57.8
+      "title": "The eternal complement",
+      "source": "OpenAI",
+      "url": "https://openai.com/index/the-eternal-complement",
+      "score": 64.1
     },
     {
-      "title": "Anthropic says Zhipu's open-weight GLM-5.3 nearly matches Claude Mythos Preview at building exploits",
-      "source": "The Decoder",
-      "url": "https://the-decoder.com/anthropic-says-zhipus-open-weight-glm-5-3-nearly-matches-claude-mythos-preview-at-building-exploits/",
-      "score": 57.1
+      "title": "The Den frees up 10-15 hours a week to grow with ChatGPT Work",
+      "source": "OpenAI",
+      "url": "https://openai.com/index/the-den-family-social",
+      "score": 63.4
     }
   ],
   "follow_ups": [],
@@ -89,13 +86,13 @@
       "license": "Wikimedia Commons (CC0)"
     }
   ],
-  "video_id": "mi5v6yhyPQI",
-  "video_url": "https://youtu.be/mi5v6yhyPQI",
-  "video_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_01_0453.mp4",
-  "thumbnail_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_01_0453_thumb.jpg",
-  "duration_seconds": 388.0,
-  "script_source": "gemini:gemini-3.7-flash",
-  "script_words": 949,
+  "video_id": "3k4t77W_V0I",
+  "video_url": "https://youtu.be/3k4t77W_V0I",
+  "video_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_01_2248.mp4",
+  "thumbnail_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_01_2248_thumb.jpg",
+  "duration_seconds": 416.2,
+  "script_source": "gemini:gemini-3.8-flash",
+  "script_words": 1048,
   "qa_passed": true,
   "uploaded": true
 }

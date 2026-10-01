@@ -1,11 +1,11 @@
 {
-  "completed": 3,
-  "last_run": "2026-10-01T04:55:17+00:00",
+  "completed": 4,
+  "last_run": "2026-10-01T22:50:55+00:00",
   "last_video": {
-    "id": "mi5v6yhyPQI",
-    "url": "https://youtu.be/mi5v6yhyPQI"
+    "id": "3k4t77W_V0I",
+    "url": "https://youtu.be/3k4t77W_V0I"
   },
-  "last_post_date": "2026-10-01",
+  "last_post_date": "2026-10-02",
   "recent_stories": [
     {
       "fingerprint": "26115d569fba57a1",
@@ -111,6 +111,41 @@
       "url": "https://the-decoder.com/anthropic-says-zhipus-open-weight-glm-5-3-nearly-matches-claude-mythos-preview-at-building-exploits/",
       "source": "The Decoder",
       "date": "2026-10-01T04:55:17+00:00"
+    },
+    {
+      "fingerprint": "8325f171c2b06e93",
+      "title": "Clef: Open-source decision models, and new RL fine-tuning platform",
+      "url": "https://blog.cloudflare.com/clef-decision-models/",
+      "source": "Hacker News",
+      "date": "2026-10-01T22:50:55+00:00"
+    },
+    {
+      "fingerprint": "35e3d2da780e4889",
+      "title": "How Albertsons Companies is reimagining retail from the inside out",
+      "url": "https://openai.com/index/albertsons-reimagining-retail",
+      "source": "OpenAI",
+      "date": "2026-10-01T22:50:55+00:00"
+    },
+    {
+      "fingerprint": "91816e6c4bc0cd9c",
+      "title": "Show HN: Open-source model routing for coding agents at Astra-level performance",
+      "url": "https://news.ycombinator.com/item?id=49911500",
+      "source": "Hacker News",
+      "date": "2026-10-01T22:50:55+00:00"
+    },
+    {
+      "fingerprint": "9ae20accacb7af35",
+      "title": "The eternal complement",
+      "url": "https://openai.com/index/the-eternal-complement",
+      "source": "OpenAI",
+      "date": "2026-10-01T22:50:55+00:00"
+    },
+    {
+      "fingerprint": "cef1b50b4818d043",
+      "title": "The Den frees up 10-15 hours a week to grow with ChatGPT Work",
+      "url": "https://openai.com/index/the-den-family-social",
+      "source": "OpenAI",
+      "date": "2026-10-01T22:50:55+00:00"
     }
   ],
   "note": "Daily AI news episodes for the AI Progress AI channel.",
@@ -119,6 +154,11 @@
       "at": "2026-10-01T04:55:17+00:00",
       "video_id": "mi5v6yhyPQI",
       "url": "https://youtu.be/mi5v6yhyPQI"
+    },
+    {
+      "at": "2026-10-01T22:50:55+00:00",
+      "video_id": "3k4t77W_V0I",
+      "url": "https://youtu.be/3k4t77W_V0I"
     }
   ]
 }
