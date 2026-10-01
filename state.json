@@ -1,9 +1,9 @@
 {
-  "completed": 2,
-  "last_run": "2026-09-30T21:32:37+00:00",
+  "completed": 3,
+  "last_run": "2026-10-01T04:55:17+00:00",
   "last_video": {
-    "id": "hi4YAFXH-TU",
-    "url": "https://youtu.be/hi4YAFXH-TU"
+    "id": "mi5v6yhyPQI",
+    "url": "https://youtu.be/mi5v6yhyPQI"
   },
   "last_post_date": "2026-10-01",
   "recent_stories": [
@@ -76,7 +76,49 @@
       "url": "https://techcrunch.com/2026/09/30/doordash-launches-an-ai-agent-you-can-text-to-order-food/",
       "source": "TechCrunch AI",
       "date": "2026-09-30T21:32:37+00:00"
+    },
+    {
+      "fingerprint": "813eabf69d655dcf",
+      "title": "Google Gemini 4 Argon closes the gap with OpenAI and Anthropic but doesn't take a clear lead",
+      "url": "https://the-decoder.com/google-gemini-4-argon-closes-the-gap-with-openai-and-anthropic-but-doesnt-take-a-clear-lead/",
+      "source": "The Decoder",
+      "date": "2026-10-01T04:55:17+00:00"
+    },
+    {
+      "fingerprint": "1765cba481da6e19",
+      "title": "Introducing SynthID Bio",
+      "url": "https://deepmind.google/blog/introducing-synthid-bio/",
+      "source": "Google DeepMind",
+      "date": "2026-10-01T04:55:17+00:00"
+    },
+    {
+      "fingerprint": "910b05218c0dc611",
+      "title": "From Training to Production, NVIDIA and CoreWeave Close the Loop on Agentic AI",
+      "url": "https://blogs.nvidia.com/blog/coreweave-agentic-ai-vera-rubin/",
+      "source": "NVIDIA",
+      "date": "2026-10-01T04:55:17+00:00"
+    },
+    {
+      "fingerprint": "efdf3d99ac9bec3c",
+      "title": "FTC launches sweeping probe into OpenAI, Anthropic, and other AI labs over consumer protection concerns",
+      "url": "https://the-decoder.com/ftc-launches-sweeping-probe-into-openai-anthropic-and-other-ai-labs-over-consumer-protection-concerns/",
+      "source": "The Decoder",
+      "date": "2026-10-01T04:55:17+00:00"
+    },
+    {
+      "fingerprint": "8ad5a66ad22090be",
+      "title": "Anthropic says Zhipu's open-weight GLM-5.3 nearly matches Claude Mythos Preview at building exploits",
+      "url": "https://the-decoder.com/anthropic-says-zhipus-open-weight-glm-5-3-nearly-matches-claude-mythos-preview-at-building-exploits/",
+      "source": "The Decoder",
+      "date": "2026-10-01T04:55:17+00:00"
     }
   ],
-  "note": "Daily AI news episodes for the AI Progress AI channel."
+  "note": "Daily AI news episodes for the AI Progress AI channel.",
+  "post_log": [
+    {
+      "at": "2026-10-01T04:55:17+00:00",
+      "video_id": "mi5v6yhyPQI",
+      "url": "https://youtu.be/mi5v6yhyPQI"
+    }
+  ]
 }
