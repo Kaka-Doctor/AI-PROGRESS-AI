@@ -6,7 +6,7 @@ epic thumbnail goes live.
 
 Usage:
     python scripts/set_thumb.py                     # latest episode (state.json)
-    VIDEO_ID=_HeKUw1au2Y python scripts/set_thumb.py
+    VIDEO_ID=hi4YAFXH-TU python scripts/set_thumb.py
     THUMB_FILE=output/work/slides/thumbnail.png ...
 """
 from __future__ import annotations
@@ -43,7 +43,7 @@ def main() -> int:
     candidates = ([Path(thumb_env)] if thumb_env else [
         ROOT / "output" / "work" / "slides" / "thumbnail.png",
     ])
-    # fall back to any *_thumb.jpg in output/
+    # fall back to any committed retrofit thumbnail in output/
     if not candidates[0].is_file():
         found = sorted((ROOT / "output").glob("*_thumb.jpg"))
         if found:
@@ -56,8 +56,10 @@ def main() -> int:
         jpg = src.with_suffix(".retrofit.jpg")
         Image.open(src).convert("RGB").save(jpg, "JPEG", quality=92)
         ok = set_thumbnail(video_id, jpg, settings)
-        print(f"thumbnail {'SET' if ok else 'NOT SET (403? verify channel at "
-              f"https://www.youtube.com/verify)'} for {video_id} from {src}")
+        status = ("SET" if ok else
+                  "NOT SET (403? verify the channel at "
+                  "https://www.youtube.com/verify then re-run)")
+        print(f"thumbnail {status} for {video_id} from {src}")
         return 0 if ok else 1
 
     print("No thumbnail file found — run the daily episode first.")
