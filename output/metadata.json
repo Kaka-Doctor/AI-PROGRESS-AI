@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-02T12:38:49+00:00",
-  "title": "OpenAI Drops GPT-6 Astra Ultrafast on NVIDIA Blackwell | AI News",
-  "description": "OpenAI and NVIDIA accelerate GPT-6 Astra Ultrafast to incredible new inference speeds while DeepSeek launches Harness Desktop for macOS and Windows. Plus, Black Forest Labs debuts Flux 3 Image with localized multi-step edits and 4K output.\n\nSTORIES COVERED\n\u2022 DeepSeek Harness Desktop for macOS and Windows \u2014 Hacker News (deepseek.com)\n\u2022 How NVIDIA GPUs Help Accelerate OpenAI\u2019s GPT-6 Astra Ultrafast \u2014 NVIDIA (blogs.nvidia.com)\n\u2022 Black Forest Labs launches Flux 3 Image with multi-step editing that l",
+  "generated_at": "2026-10-02T23:24:46+00:00",
+  "title": "OpenAI Drops GPT-6 Model Guide & Local AI Memory EXPLODES | AI News",
+  "description": "OpenAI releases its official practical guide for building with the GPT-6 model family. Plus, new ChatGPT site features, enterprise workflow gains, Google's September round-up, and massive local AI hardware from NVIDIA.\n\nSTORIES COVERED\n\u2022 A model guide for the GPT-6 family \u2014 OpenAI (openai.com)\n\u2022 Sites in ChatGPT \u2014 Hacker News (chatgpt.com)\n\u2022 Chatham scales its capital markets expertise with OpenAI \u2014 OpenAI (openai.com)\n\u2022 The latest AI news we announced in September 2026 \u2014 Google AI (blog.google)",
   "tags": [
     "AI news",
     "artificial intelligence",
@@ -14,60 +14,48 @@
     "DeepSeek",
     "AI progress",
     "AI Progress AI",
-    "DeepSeek",
-    "Harness",
-    "Desktop",
-    "macOS",
-    "Windows",
-    "NVIDIA",
-    "GPUs",
-    "Help",
-    "Accelerate",
-    "Astra",
-    "Ultrafast",
-    "Black",
-    "Forest",
-    "Labs",
-    "launches",
-    "Flux",
-    "Image",
-    "editing",
-    "leaves",
-    "rest",
-    "your",
-    "picture",
-    "alone"
+    "model",
+    "guide",
+    "family",
+    "Sites",
+    "ChatGPT",
+    "Chatham",
+    "scales",
+    "capital",
+    "markets",
+    "expertise",
+    "OpenAI"
   ],
   "stories": [
     {
-      "title": "DeepSeek Harness Desktop for macOS and Windows",
+      "title": "A model guide for the GPT-6 family",
+      "source": "OpenAI",
+      "url": "https://openai.com/index/practical-guide-building-gpt-6",
+      "score": 67.7
+    },
+    {
+      "title": "Sites in ChatGPT",
       "source": "Hacker News",
-      "url": "https://www.deepseek.com/en/harness/",
-      "score": 70.0
+      "url": "https://chatgpt.com/features/sites/",
+      "score": 63.0
     },
     {
-      "title": "How NVIDIA GPUs Help Accelerate OpenAI\u2019s GPT-6 Astra Ultrafast",
+      "title": "Chatham scales its capital markets expertise with OpenAI",
+      "source": "OpenAI",
+      "url": "https://openai.com/index/chatham-financial",
+      "score": 61.2
+    },
+    {
+      "title": "The latest AI news we announced in September 2026",
+      "source": "Google AI",
+      "url": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-september-2026/",
+      "score": 61.2
+    },
+    {
+      "title": "NVIDIA DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
       "source": "NVIDIA",
-      "url": "https://blogs.nvidia.com/blog/gpus-openai-gpt-6-astra-ultrafast/",
-      "score": 62.7
-    },
-    {
-      "title": "Black Forest Labs launches Flux 3 Image with multi-step editing that leaves the rest of your picture alone",
-      "source": "The Decoder",
-      "url": "https://the-decoder.com/black-forest-labs-launches-flux-3-image-with-multi-step-editing-that-leaves-the-rest-of-your-picture-alone/",
-      "score": 58.4
-    },
-    {
-      "title": "AutoSynthData: Generating Training Data for Enterprise Agents",
-      "source": "Hugging Face",
-      "url": "https://huggingface.co/blog/ServiceNow-AI/autosynthdata",
-      "score": 57.2
-    },
-    {
-      "title": "Microsoft AI releases new transcription and text-to-speech models for voice agents",
-      "source": "The Decoder",
-      "url": "https://the-decoder.com/microsoft-ai-releases-new-transcription-and-text-to-speech-models-for-voice-agents/",
-      "score": 55.9
+      "url": "https://blogs.nvidia.com/blog/local-ai-dgx-spark-64gb-sync/",
+      "score": 58.6
     }
   ],
   "follow_ups": [],
@@ -94,13 +82,13 @@
       "license": "Wikimedia Commons (CC0)"
     }
   ],
-  "video_id": "CvWGMoBXQ1Q",
-  "video_url": "https://youtu.be/CvWGMoBXQ1Q",
-  "video_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_02_1234.mp4",
-  "thumbnail_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_02_1234_thumb.jpg",
-  "duration_seconds": 387.3,
-  "script_source": "gemini:gemini-3.7-flash",
-  "script_words": 947,
+  "video_id": "hv7UIwZU75E",
+  "video_url": "https://youtu.be/hv7UIwZU75E",
+  "video_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_02_2322.mp4",
+  "thumbnail_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_02_2322_thumb.jpg",
+  "duration_seconds": 333.1,
+  "script_source": "gemini:gemini-3.6-flash",
+  "script_words": 808,
   "qa_passed": true,
   "uploaded": true
 }

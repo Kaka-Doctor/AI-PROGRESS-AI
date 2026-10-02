@@ -1,11 +1,11 @@
 {
-  "completed": 5,
-  "last_run": "2026-10-02T12:38:49+00:00",
+  "completed": 6,
+  "last_run": "2026-10-02T23:24:46+00:00",
   "last_video": {
-    "id": "CvWGMoBXQ1Q",
-    "url": "https://youtu.be/CvWGMoBXQ1Q"
+    "id": "hv7UIwZU75E",
+    "url": "https://youtu.be/hv7UIwZU75E"
   },
-  "last_post_date": "2026-10-02",
+  "last_post_date": "2026-10-03",
   "recent_stories": [
     {
       "fingerprint": "26115d569fba57a1",
@@ -181,6 +181,41 @@
       "url": "https://the-decoder.com/microsoft-ai-releases-new-transcription-and-text-to-speech-models-for-voice-agents/",
       "source": "The Decoder",
       "date": "2026-10-02T12:38:49+00:00"
+    },
+    {
+      "fingerprint": "6e25c98df71d01fe",
+      "title": "A model guide for the GPT-6 family",
+      "url": "https://openai.com/index/practical-guide-building-gpt-6",
+      "source": "OpenAI",
+      "date": "2026-10-02T23:24:46+00:00"
+    },
+    {
+      "fingerprint": "56bb39c73e825174",
+      "title": "Sites in ChatGPT",
+      "url": "https://chatgpt.com/features/sites/",
+      "source": "Hacker News",
+      "date": "2026-10-02T23:24:46+00:00"
+    },
+    {
+      "fingerprint": "95a45ca8451d8de4",
+      "title": "Chatham scales its capital markets expertise with OpenAI",
+      "url": "https://openai.com/index/chatham-financial",
+      "source": "OpenAI",
+      "date": "2026-10-02T23:24:46+00:00"
+    },
+    {
+      "fingerprint": "289456d4a12a2dcb",
+      "title": "The latest AI news we announced in September 2026",
+      "url": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-september-2026/",
+      "source": "Google AI",
+      "date": "2026-10-02T23:24:46+00:00"
+    },
+    {
+      "fingerprint": "8e89ac7b96ac70e6",
+      "title": "NVIDIA DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
+      "url": "https://blogs.nvidia.com/blog/local-ai-dgx-spark-64gb-sync/",
+      "source": "NVIDIA",
+      "date": "2026-10-02T23:24:46+00:00"
     }
   ],
   "note": "Daily AI news episodes for the AI Progress AI channel.",
@@ -199,6 +234,11 @@
       "at": "2026-10-02T12:38:49+00:00",
       "video_id": "CvWGMoBXQ1Q",
       "url": "https://youtu.be/CvWGMoBXQ1Q"
+    },
+    {
+      "at": "2026-10-02T23:24:46+00:00",
+      "video_id": "hv7UIwZU75E",
+      "url": "https://youtu.be/hv7UIwZU75E"
     }
   ]
 }
