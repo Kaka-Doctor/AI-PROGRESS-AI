@@ -1,9 +1,9 @@
 {
-  "completed": 4,
-  "last_run": "2026-10-01T22:50:55+00:00",
+  "completed": 5,
+  "last_run": "2026-10-02T12:38:49+00:00",
   "last_video": {
-    "id": "3k4t77W_V0I",
-    "url": "https://youtu.be/3k4t77W_V0I"
+    "id": "CvWGMoBXQ1Q",
+    "url": "https://youtu.be/CvWGMoBXQ1Q"
   },
   "last_post_date": "2026-10-02",
   "recent_stories": [
@@ -146,6 +146,41 @@
       "url": "https://openai.com/index/the-den-family-social",
       "source": "OpenAI",
       "date": "2026-10-01T22:50:55+00:00"
+    },
+    {
+      "fingerprint": "8878e2a0f1e5e8f7",
+      "title": "DeepSeek Harness Desktop for macOS and Windows",
+      "url": "https://www.deepseek.com/en/harness/",
+      "source": "Hacker News",
+      "date": "2026-10-02T12:38:49+00:00"
+    },
+    {
+      "fingerprint": "a056cdd667bdd223",
+      "title": "How NVIDIA GPUs Help Accelerate OpenAI\u2019s GPT-6 Astra Ultrafast",
+      "url": "https://blogs.nvidia.com/blog/gpus-openai-gpt-6-astra-ultrafast/",
+      "source": "NVIDIA",
+      "date": "2026-10-02T12:38:49+00:00"
+    },
+    {
+      "fingerprint": "4569403d566a5677",
+      "title": "Black Forest Labs launches Flux 3 Image with multi-step editing that leaves the rest of your picture alone",
+      "url": "https://the-decoder.com/black-forest-labs-launches-flux-3-image-with-multi-step-editing-that-leaves-the-rest-of-your-picture-alone/",
+      "source": "The Decoder",
+      "date": "2026-10-02T12:38:49+00:00"
+    },
+    {
+      "fingerprint": "3c969ba5f81896df",
+      "title": "AutoSynthData: Generating Training Data for Enterprise Agents",
+      "url": "https://huggingface.co/blog/ServiceNow-AI/autosynthdata",
+      "source": "Hugging Face",
+      "date": "2026-10-02T12:38:49+00:00"
+    },
+    {
+      "fingerprint": "44f68d1b32802fcc",
+      "title": "Microsoft AI releases new transcription and text-to-speech models for voice agents",
+      "url": "https://the-decoder.com/microsoft-ai-releases-new-transcription-and-text-to-speech-models-for-voice-agents/",
+      "source": "The Decoder",
+      "date": "2026-10-02T12:38:49+00:00"
     }
   ],
   "note": "Daily AI news episodes for the AI Progress AI channel.",
@@ -159,6 +194,11 @@
       "at": "2026-10-01T22:50:55+00:00",
       "video_id": "3k4t77W_V0I",
       "url": "https://youtu.be/3k4t77W_V0I"
+    },
+    {
+      "at": "2026-10-02T12:38:49+00:00",
+      "video_id": "CvWGMoBXQ1Q",
+      "url": "https://youtu.be/CvWGMoBXQ1Q"
     }
   ]
 }
