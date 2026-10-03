@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-02T23:24:46+00:00",
-  "title": "OpenAI Drops GPT-6 Model Guide & Local AI Memory EXPLODES | AI News",
-  "description": "OpenAI releases its official practical guide for building with the GPT-6 model family. Plus, new ChatGPT site features, enterprise workflow gains, Google's September round-up, and massive local AI hardware from NVIDIA.\n\nSTORIES COVERED\n\u2022 A model guide for the GPT-6 family \u2014 OpenAI (openai.com)\n\u2022 Sites in ChatGPT \u2014 Hacker News (chatgpt.com)\n\u2022 Chatham scales its capital markets expertise with OpenAI \u2014 OpenAI (openai.com)\n\u2022 The latest AI news we announced in September 2026 \u2014 Google AI (blog.google)",
+  "generated_at": "2026-10-03T11:45:36+00:00",
+  "title": "Redis Creator Releases ds4 | Google GPT-6 Astra Tops 3D Benchmark | AI News",
+  "description": "Today we cover the launch of ds4 by the creator of Redis, groundbreaking aging research, LLM security updates from Greg Kroah-Hartman, and Google's GPT-6 Astra dominating the new LEGO-Anything benchmark.\n\nSTORIES COVERED\n\u2022 From the creator of Redis; run LLM locally with ds4 \u2014 Hacker News (dwarfstar.sh)\n\u2022 Loss of cell identity drives human aging: Two new papers \u2014 Hacker News (erictopol.substack.com)\n\u2022 Greg Kroah-Hartman \u2013 Security in the LLM Age [video] \u2014 Hacker News (youtube.com)\n\u2022 AI agents bui",
   "tags": [
     "AI news",
     "artificial intelligence",
@@ -14,48 +14,50 @@
     "DeepSeek",
     "AI progress",
     "AI Progress AI",
-    "model",
-    "guide",
-    "family",
-    "Sites",
-    "ChatGPT",
-    "Chatham",
-    "scales",
-    "capital",
-    "markets",
-    "expertise",
-    "OpenAI"
+    "creator",
+    "Redis",
+    "locally",
+    "Loss",
+    "cell",
+    "identity",
+    "drives",
+    "human",
+    "aging",
+    "papers",
+    "Greg",
+    "Security",
+    "video"
   ],
   "stories": [
     {
-      "title": "A model guide for the GPT-6 family",
-      "source": "OpenAI",
-      "url": "https://openai.com/index/practical-guide-building-gpt-6",
-      "score": 67.7
-    },
-    {
-      "title": "Sites in ChatGPT",
+      "title": "From the creator of Redis; run LLM locally with ds4",
       "source": "Hacker News",
-      "url": "https://chatgpt.com/features/sites/",
-      "score": 63.0
+      "url": "https://dwarfstar.sh/",
+      "score": 68.0
     },
     {
-      "title": "Chatham scales its capital markets expertise with OpenAI",
-      "source": "OpenAI",
-      "url": "https://openai.com/index/chatham-financial",
-      "score": 61.2
+      "title": "Loss of cell identity drives human aging: Two new papers",
+      "source": "Hacker News",
+      "url": "https://erictopol.substack.com/p/loss-of-cell-identity-drives-human",
+      "score": 68.0
     },
     {
-      "title": "The latest AI news we announced in September 2026",
-      "source": "Google AI",
-      "url": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-september-2026/",
-      "score": 61.2
+      "title": "Greg Kroah-Hartman \u2013 Security in the LLM Age [video]",
+      "source": "Hacker News",
+      "url": "https://www.youtube.com/watch?v=NnV_cWeoo5Q",
+      "score": 66.0
     },
     {
-      "title": "NVIDIA DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
-      "source": "NVIDIA",
-      "url": "https://blogs.nvidia.com/blog/local-ai-dgx-spark-64gb-sync/",
-      "score": 58.6
+      "title": "AI agents build 3D scenes from photos but have no idea if they got it right",
+      "source": "The Decoder",
+      "url": "https://the-decoder.com/ai-agents-build-3d-scenes-from-photos-but-have-no-idea-if-they-got-it-right/",
+      "score": 59.0
+    },
+    {
+      "title": "One month coding with GLM 5.3 Flash",
+      "source": "Hacker News",
+      "url": "https://wagtail.org/blog/one-month-on-glm-53-flash/",
+      "score": 58.0
     }
   ],
   "follow_ups": [],
@@ -82,13 +84,13 @@
       "license": "Wikimedia Commons (CC0)"
     }
   ],
-  "video_id": "hv7UIwZU75E",
-  "video_url": "https://youtu.be/hv7UIwZU75E",
-  "video_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_02_2322.mp4",
-  "thumbnail_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_02_2322_thumb.jpg",
-  "duration_seconds": 333.1,
-  "script_source": "gemini:gemini-3.6-flash",
-  "script_words": 808,
+  "video_id": "A1sigUkTbsQ",
+  "video_url": "https://youtu.be/A1sigUkTbsQ",
+  "video_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_03_1143.mp4",
+  "thumbnail_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_03_1143_thumb.jpg",
+  "duration_seconds": 395.2,
+  "script_source": "gemini:gemini-3.5-flash",
+  "script_words": 1042,
   "qa_passed": true,
   "uploaded": true
 }
