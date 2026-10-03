@@ -1,11 +1,11 @@
 {
-  "completed": 7,
-  "last_run": "2026-10-03T11:45:36+00:00",
+  "completed": 8,
+  "last_run": "2026-10-03T22:34:55+00:00",
   "last_video": {
-    "id": "A1sigUkTbsQ",
-    "url": "https://youtu.be/A1sigUkTbsQ"
+    "id": "aWTRn0Pw1zI",
+    "url": "https://youtu.be/aWTRn0Pw1zI"
   },
-  "last_post_date": "2026-10-03",
+  "last_post_date": "2026-10-04",
   "recent_stories": [
     {
       "fingerprint": "26115d569fba57a1",
@@ -251,6 +251,41 @@
       "url": "https://wagtail.org/blog/one-month-on-glm-53-flash/",
       "source": "Hacker News",
       "date": "2026-10-03T11:45:36+00:00"
+    },
+    {
+      "fingerprint": "0de2cf158d1cedfa",
+      "title": "Apparently, OpenAI isn't trying to build \"magic intelligence in the sky\" anymore",
+      "url": "https://the-decoder.com/apparently-openai-isnt-trying-to-build-magic-intelligence-in-the-sky-anymore/",
+      "source": "The Decoder",
+      "date": "2026-10-03T22:34:55+00:00"
+    },
+    {
+      "fingerprint": "f73d2050b8f25e7e",
+      "title": "\"Muse Gadgets\" turns AI hardware into an open-source DIY project",
+      "url": "https://the-decoder.com/muse-gadgets-turns-ai-hardware-into-an-open-source-diy-project/",
+      "source": "The Decoder",
+      "date": "2026-10-03T22:34:55+00:00"
+    },
+    {
+      "fingerprint": "8dfdbe3dd31daa8a",
+      "title": "Another OpenAI safety departure adds to a pattern of researchers leaving with public warnings",
+      "url": "https://the-decoder.com/another-openai-safety-departure-adds-to-a-pattern-of-researchers-leaving-with-public-warnings/",
+      "source": "The Decoder",
+      "date": "2026-10-03T22:34:55+00:00"
+    },
+    {
+      "fingerprint": "4bede9ba73981918",
+      "title": "Deepmind researchers propose \"Artificial Symbiotic Intelligence\" as an alternative to the singularity",
+      "url": "https://the-decoder.com/deepmind-researchers-propose-artificial-symbiotic-intelligence-as-an-alternative-to-the-singularity/",
+      "source": "The Decoder",
+      "date": "2026-10-03T22:34:55+00:00"
+    },
+    {
+      "fingerprint": "adc3d8e731d1cd35",
+      "title": "Claude Code's new Mods system lets developers rewrite the AI coding tool from the inside",
+      "url": "https://the-decoder.com/claude-codes-new-mods-system-lets-developers-rewrite-the-ai-coding-tool-from-the-inside/",
+      "source": "The Decoder",
+      "date": "2026-10-03T22:34:55+00:00"
     }
   ],
   "note": "Daily AI news episodes for the AI Progress AI channel.",
@@ -279,6 +314,11 @@
       "at": "2026-10-03T11:45:36+00:00",
       "video_id": "A1sigUkTbsQ",
       "url": "https://youtu.be/A1sigUkTbsQ"
+    },
+    {
+      "at": "2026-10-03T22:34:55+00:00",
+      "video_id": "aWTRn0Pw1zI",
+      "url": "https://youtu.be/aWTRn0Pw1zI"
     }
   ]
 }

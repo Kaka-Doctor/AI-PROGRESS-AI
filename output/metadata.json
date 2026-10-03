@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-03T11:45:36+00:00",
-  "title": "Redis Creator Releases ds4 | Google GPT-6 Astra Tops 3D Benchmark | AI News",
-  "description": "Today we cover the launch of ds4 by the creator of Redis, groundbreaking aging research, LLM security updates from Greg Kroah-Hartman, and Google's GPT-6 Astra dominating the new LEGO-Anything benchmark.\n\nSTORIES COVERED\n\u2022 From the creator of Redis; run LLM locally with ds4 \u2014 Hacker News (dwarfstar.sh)\n\u2022 Loss of cell identity drives human aging: Two new papers \u2014 Hacker News (erictopol.substack.com)\n\u2022 Greg Kroah-Hartman \u2013 Security in the LLM Age [video] \u2014 Hacker News (youtube.com)\n\u2022 AI agents bui",
+  "generated_at": "2026-10-03T22:34:55+00:00",
+  "title": "OpenAI Drops Sky Magic Lore as Meta Unleashes DIY AI Hardware | AI News",
+  "description": "OpenAI CEO Sam Altman warns against treating models like religious entities while Meta opens up DIY AI hardware with Muse Gadgets. Meanwhile, safety departures escalate, DeepMind challenges the singularity myth, and Claude Code unlocks internal mods.\n\nSTORIES COVERED\n\u2022 Apparently, OpenAI isn't trying to build \"magic intelligence in the sky\" anymore \u2014 The Decoder (the-decoder.com)\n\u2022 \"Muse Gadgets\" turns AI hardware into an open-source DIY project \u2014 The Decoder (the-decoder.com)\n\u2022 Another OpenAI s",
   "tags": [
     "AI news",
     "artificial intelligence",
@@ -14,50 +14,59 @@
     "DeepSeek",
     "AI progress",
     "AI Progress AI",
-    "creator",
-    "Redis",
-    "locally",
-    "Loss",
-    "cell",
-    "identity",
-    "drives",
-    "human",
-    "aging",
-    "papers",
-    "Greg",
-    "Security",
-    "video"
+    "Apparently",
+    "OpenAI",
+    "trying",
+    "build",
+    "magic",
+    "intelligence",
+    "anymore",
+    "Muse",
+    "Gadgets",
+    "turns",
+    "hardware",
+    "project",
+    "Another",
+    "OpenAI",
+    "safety",
+    "departure",
+    "adds",
+    "pattern",
+    "researchers",
+    "leaving",
+    "public",
+    "warnings"
   ],
   "stories": [
     {
-      "title": "From the creator of Redis; run LLM locally with ds4",
-      "source": "Hacker News",
-      "url": "https://dwarfstar.sh/",
-      "score": 68.0
-    },
-    {
-      "title": "Loss of cell identity drives human aging: Two new papers",
-      "source": "Hacker News",
-      "url": "https://erictopol.substack.com/p/loss-of-cell-identity-drives-human",
-      "score": 68.0
-    },
-    {
-      "title": "Greg Kroah-Hartman \u2013 Security in the LLM Age [video]",
-      "source": "Hacker News",
-      "url": "https://www.youtube.com/watch?v=NnV_cWeoo5Q",
-      "score": 66.0
-    },
-    {
-      "title": "AI agents build 3D scenes from photos but have no idea if they got it right",
+      "title": "Apparently, OpenAI isn't trying to build \"magic intelligence in the sky\" anymore",
       "source": "The Decoder",
-      "url": "https://the-decoder.com/ai-agents-build-3d-scenes-from-photos-but-have-no-idea-if-they-got-it-right/",
-      "score": 59.0
+      "url": "https://the-decoder.com/apparently-openai-isnt-trying-to-build-magic-intelligence-in-the-sky-anymore/",
+      "score": 57.8
     },
     {
-      "title": "One month coding with GLM 5.3 Flash",
-      "source": "Hacker News",
-      "url": "https://wagtail.org/blog/one-month-on-glm-53-flash/",
-      "score": 58.0
+      "title": "\"Muse Gadgets\" turns AI hardware into an open-source DIY project",
+      "source": "The Decoder",
+      "url": "https://the-decoder.com/muse-gadgets-turns-ai-hardware-into-an-open-source-diy-project/",
+      "score": 55.3
+    },
+    {
+      "title": "Another OpenAI safety departure adds to a pattern of researchers leaving with public warnings",
+      "source": "The Decoder",
+      "url": "https://the-decoder.com/another-openai-safety-departure-adds-to-a-pattern-of-researchers-leaving-with-public-warnings/",
+      "score": 55.2
+    },
+    {
+      "title": "Deepmind researchers propose \"Artificial Symbiotic Intelligence\" as an alternative to the singularity",
+      "source": "The Decoder",
+      "url": "https://the-decoder.com/deepmind-researchers-propose-artificial-symbiotic-intelligence-as-an-alternative-to-the-singularity/",
+      "score": 54.0
+    },
+    {
+      "title": "Claude Code's new Mods system lets developers rewrite the AI coding tool from the inside",
+      "source": "The Decoder",
+      "url": "https://the-decoder.com/claude-codes-new-mods-system-lets-developers-rewrite-the-ai-coding-tool-from-the-inside/",
+      "score": 53.9
     }
   ],
   "follow_ups": [],
@@ -84,13 +93,13 @@
       "license": "Wikimedia Commons (CC0)"
     }
   ],
-  "video_id": "A1sigUkTbsQ",
-  "video_url": "https://youtu.be/A1sigUkTbsQ",
-  "video_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_03_1143.mp4",
-  "thumbnail_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_03_1143_thumb.jpg",
-  "duration_seconds": 395.2,
-  "script_source": "gemini:gemini-3.5-flash",
-  "script_words": 1042,
+  "video_id": "aWTRn0Pw1zI",
+  "video_url": "https://youtu.be/aWTRn0Pw1zI",
+  "video_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_03_2232.mp4",
+  "thumbnail_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_03_2232_thumb.jpg",
+  "duration_seconds": 427.4,
+  "script_source": "gemini:gemini-3.8-flash",
+  "script_words": 1076,
   "qa_passed": true,
   "uploaded": true
 }
