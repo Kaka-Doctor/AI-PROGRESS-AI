@@ -89,6 +89,11 @@ jobs:
           ENABLE_CLIPS: ${{ vars.ENABLE_CLIPS || '1' }}
           ENABLE_YT_CLIPS: ${{ vars.ENABLE_YT_CLIPS || '1' }}
           MAX_VIDEO_CLIPS: ${{ vars.MAX_VIDEO_CLIPS || '3' }}
+          ENABLE_FOOTAGE: ${{ vars.ENABLE_FOOTAGE || '1' }}
+          MAX_FOOTAGE_SOURCES: ${{ vars.MAX_FOOTAGE_SOURCES || '12' }}
+          FOOTAGE_SEGMENT_SECONDS: ${{ vars.FOOTAGE_SEGMENT_SECONDS || '14' }}
+          SLIDE_HEAD_SECONDS: ${{ vars.SLIDE_HEAD_SECONDS || '2.5' }}
+          MIN_FOOTAGE_RATIO: ${{ vars.MIN_FOOTAGE_RATIO || '0.90' }}
           FORCE_UPLOAD: ${{ (github.event_name == 'workflow_dispatch'
                         && (inputs.force == true || inputs.force == 'true')) && 'true' || '' }}
           DRY_RUN: ${{ (github.event_name == 'workflow_dispatch'

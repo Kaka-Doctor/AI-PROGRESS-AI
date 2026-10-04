@@ -153,7 +153,8 @@ def _yt_download(video_id: str, out_path: Path) -> Path | None:
         f"https://www.youtube.com/watch?v={video_id}",
     ]
     try:
-        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
+        proc = subprocess.run(cmd, capture_output=True, text=True,
+                              timeout=300, stdin=subprocess.DEVNULL)
     except subprocess.TimeoutExpired:
         log.debug("yt-dlp timed out on %s", video_id)
         return None

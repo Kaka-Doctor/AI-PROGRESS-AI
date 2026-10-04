@@ -56,6 +56,9 @@ def check_video(video_path: Path, stats: dict,
     duration = float(stats.get("duration", 0.0))
     minutes = duration / 60.0
     size_mb = (video_path.stat().st_size / 1e6) if video_path.exists() else 0.0
+    ratio = float(stats.get("footage_ratio", 0.0))
+    footage_min = float(stats.get("footage_seconds", 0.0)) / 60.0
+    n_sources = int(stats.get("footage_sources", 0))
     return [
         Check("video_duration_min", minutes >= settings.min_video_minutes,
               f"{minutes:.1f} minutes (minimum {settings.min_video_minutes})"),
@@ -63,6 +66,12 @@ def check_video(video_path: Path, stats: dict,
               f"{minutes:.1f} minutes (maximum {settings.max_video_minutes})"),
         Check("video_file", video_path.exists() and size_mb >= 1.0,
               f"{size_mb:.1f} MB — {video_path.name}"),
+        Check("real_footage_ratio", ratio >= settings.min_footage_ratio,
+              f"{100 * ratio:.0f}% real video footage (minimum "
+              f"{100 * settings.min_footage_ratio:.0f}%) — "
+              f"{footage_min:.1f} min from {n_sources} sources"),
+        Check("footage_attribution", n_sources >= 1,
+              f"{n_sources} attributed footage sources (license compliance)"),
     ]
 
 

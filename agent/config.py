@@ -94,6 +94,13 @@ class Settings:
     clip_max_seconds: float = 12.0     # trim length of each clip used
     enable_yt_clips: bool = True       # YouTube Creative-Commons search+cut
 
+    # --- REAL footage pool (the visual backbone: ~90% of runtime) -----------
+    enable_footage: bool = True        # master switch for the pool
+    max_footage_sources: int = 12      # distinct source videos per episode
+    footage_segment_seconds: float = 14.0  # per-segment cap (news pacing)
+    slide_head_seconds: float = 2.5    # brief headline slide per section
+    min_footage_ratio: float = 0.90    # QA gate: share of runtime on real video
+
     # --- Branding ----------------------------------------------------------
     channel_name: str = "AI Progress AI"
     channel_handle: str = "@AIPROGRESSAI"
@@ -160,6 +167,12 @@ class Settings:
             max_video_clips=int(get("MAX_VIDEO_CLIPS", "3") or 3),
             clip_max_seconds=float(get("CLIP_MAX_SECONDS", "12") or 12),
             enable_yt_clips=_bool(get("ENABLE_YT_CLIPS"), True),
+            enable_footage=_bool(get("ENABLE_FOOTAGE"), True),
+            max_footage_sources=int(get("MAX_FOOTAGE_SOURCES", "12") or 12),
+            footage_segment_seconds=float(
+                get("FOOTAGE_SEGMENT_SECONDS", "14") or 14),
+            slide_head_seconds=float(get("SLIDE_HEAD_SECONDS", "2.5") or 2.5),
+            min_footage_ratio=float(get("MIN_FOOTAGE_RATIO", "0.90") or 0.90),
             channel_name=get("CHANNEL_NAME", "AI Progress AI"),
             channel_handle=get("CHANNEL_HANDLE", "@AIPROGRESSAI"),
             channel_url=get("CHANNEL_URL",

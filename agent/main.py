@@ -17,7 +17,7 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-from . import broll, clips as clips_mod, qa, state as state_mod
+from . import broll, footage as footage_mod, qa, state as state_mod
 from .config import OUTPUT_DIR, ROOT, Settings, WORK_DIR
 from .news import collect_stories
 from .scriptgen import generate_script
@@ -145,11 +145,8 @@ def main(argv: list[str] | None = None) -> int:
     for i, s in enumerate(stories, 1):
         log.info("STORY %d (score %.0f): %s — %s", i, s.score, s.title, s.source)
 
-    # 2. B-roll images (best effort) ----------------------------------------
+    # 2. B-roll images (best effort — slide backgrounds) ---------------------
     images = broll.fetch_all(stories, settings, out_dir / "broll")
-
-    # 2b. Legal video clips (YouTube CC / Wikimedia / Internet Archive) -----
-    story_clips = clips_mod.find_clips(stories, settings, out_dir / "clips")
 
     # 3. Write the script (+ STORM RESILIENCE) ------------------------------
     rounds = max(1, settings.script_retry_rounds)
@@ -206,13 +203,7 @@ def main(argv: list[str] | None = None) -> int:
             sec.image_path = str(images[sec.story_index])  # type: ignore[attr-defined]
     slides = renderer.render_all(script, stories, work / "slides")
 
-    # map story clips → SECTION indexes (the story section of that story)
-    section_clips: dict[int, clips_mod.Clip] = {}
-    for si, sec in enumerate(script.sections):
-        if sec.type == "story" and sec.story_index in story_clips:
-            section_clips[si] = story_clips[sec.story_index]
-
-    # 5. Narration -------------------------------------------------------------
+    # 5. Narration (BEFORE footage: the pool is sized to its length) ---------
     narrations = []
     for sec in script.sections:
         text = sec.narration
@@ -222,14 +213,29 @@ def main(argv: list[str] | None = None) -> int:
     wavs = synth_sections(narrations, settings.voice, settings.tts_rate,
                           work / "audio")
 
-    # 6. Video ------------------------------------------------------------------
+    # 5b. REAL footage pool (the visual backbone, ~90% of runtime) -----------
+    # section → story map: story AND take sections carry a story_index,
+    # so topical footage plays under the sections that talk about it.
+    section_story: dict[int, int] = {}
+    for si, sec in enumerate(script.sections):
+        idx = getattr(sec, "story_index", 0) or 0
+        if idx:
+            section_story[si] = idx
+    narration_total = sum(probe_duration(w) for w in wavs)
+    needed = max(60.0, narration_total * 0.90)
+    sources = footage_mod.collect_footage(stories, settings,
+                                           out_dir / "footage", needed)
+
+    # 6. Video (FOOTAGE-FIRST: real video body + brief headline slides) ------
     date_slug = datetime.now(timezone.utc).strftime("%Y_%m_%d_%H%M")
     video_path = out_dir / f"ai_news_{date_slug}.mp4"
     stats = render_video(slides, wavs, video_path,
                          ken_burns=settings.ken_burns,
                          work_dir=work / "segments",
-                         clips=section_clips,
-                         clip_max_seconds=settings.clip_max_seconds)
+                         sources=sources,
+                         section_story=section_story,
+                         footage_segment_seconds=settings.footage_segment_seconds,
+                         slide_head_seconds=settings.slide_head_seconds)
 
     # 7. Thumbnail ----------------------------------------------------------------
     from PIL import Image
@@ -250,7 +256,7 @@ def main(argv: list[str] | None = None) -> int:
     from .youtube import build_description
     title = (script.title or f"{stories[0].title[:60]} | AI News "
              f"— {datetime.now(timezone.utc).strftime('%b %d %H:%M')} UTC").strip()
-    clip_lines = clips_mod.attribution_lines(story_clips)
+    clip_lines = footage_mod.attribution_lines(sources)
     description = build_description(script.description, stories,
                                     section_chapters, settings,
                                     clip_lines=clip_lines)
@@ -302,9 +308,11 @@ def main(argv: list[str] | None = None) -> int:
         "stories": [{"title": s.title, "source": s.source, "url": s.url,
                      "score": round(s.score, 1)} for s in stories],
         "follow_ups": sorted(follow_ups),
-        "clips": [{"story": i, "provider": c.provider, "title": c.title,
-                   "url": c.url, "license": c.license}
-                  for i, c in story_clips.items()],
+        "footage": [{"story": s.story, "provider": s.provider,
+                     "title": s.title, "url": s.url, "license": s.license,
+                     "used_segments": len(s.segments)}
+                    for s in sources if s.segments],
+        "footage_ratio": stats.get("footage_ratio"),
         "video_id": video_id,
         "video_url": video_url,
         "video_file": str(video_path),
@@ -336,9 +344,10 @@ def main(argv: list[str] | None = None) -> int:
         log.info("State not advanced (--keep-state).")
 
     log.info("Done in %.1f min. %d stories covered (%d follow-ups), "
-             "%d real video clips used.",
+             "%.0f%% real video footage from %d sources.",
              (time.time() - started) / 60, len(stories), len(follow_ups),
-             len(story_clips))
+             100 * float(stats.get("footage_ratio", 0.0)),
+             int(stats.get("footage_sources", 0)))
     return 0
 
 
