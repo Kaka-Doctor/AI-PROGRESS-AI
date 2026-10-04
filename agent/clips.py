@@ -357,7 +357,7 @@ def _find_archive_clip(story: Story, work_dir: Path,
     for query in story_queries(story):
         for doc in _archive_search(query):
             ident = doc.get("identifier", "")
-            if not ident or f"archive.org/details/{ident}" in exclude:
+            if not ident or f"https://archive.org/details/{ident}" in exclude:
                 continue
             if not _topic_ok(str(doc.get("title", ""))):
                 continue  # off-topic footage

@@ -146,7 +146,7 @@ def _try_archive(query: str, work_dir: Path, exclude: set[str],
                  ) -> FootageSource | None:
     for doc in _archive_search(query):
         ident = doc.get("identifier", "")
-        if not ident or f"archive.org/details/{ident}" in exclude:
+        if not ident or f"https://archive.org/details/{ident}" in exclude:
             continue
         if not _topic_ok(str(doc.get("title", ""))):
             continue
