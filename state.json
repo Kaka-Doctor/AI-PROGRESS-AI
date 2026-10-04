@@ -1,9 +1,9 @@
 {
-  "completed": 8,
-  "last_run": "2026-10-03T22:34:55+00:00",
+  "completed": 9,
+  "last_run": "2026-10-04T12:24:44+00:00",
   "last_video": {
-    "id": "aWTRn0Pw1zI",
-    "url": "https://youtu.be/aWTRn0Pw1zI"
+    "id": "gan1Dl-OPXk",
+    "url": "https://youtu.be/gan1Dl-OPXk"
   },
   "last_post_date": "2026-10-04",
   "recent_stories": [
@@ -286,6 +286,41 @@
       "url": "https://the-decoder.com/claude-codes-new-mods-system-lets-developers-rewrite-the-ai-coding-tool-from-the-inside/",
       "source": "The Decoder",
       "date": "2026-10-03T22:34:55+00:00"
+    },
+    {
+      "fingerprint": "66efdeed6657f4e6",
+      "title": "Agents don't need memory, they need documentation",
+      "url": "https://liao.gg/blog/agents-dont-need-memory",
+      "source": "Hacker News",
+      "date": "2026-10-04T12:24:44+00:00"
+    },
+    {
+      "fingerprint": "93657f7fb680ac27",
+      "title": "NASA and IBM's open source lunar model turns 17 years of orbiter data into a foundation for lunar science",
+      "url": "https://the-decoder.com/nasa-and-ibms-open-source-lunar-model-turns-17-years-of-orbiter-data-into-a-foundation-for-lunar-science/",
+      "source": "The Decoder",
+      "date": "2026-10-04T12:24:44+00:00"
+    },
+    {
+      "fingerprint": "c50ce3e547b0b764",
+      "title": "The Agent Said It Was Done. The Database Disagreed.",
+      "url": "https://huggingface.co/blog/microsoft/thinkingbox",
+      "source": "Hugging Face",
+      "date": "2026-10-04T12:24:44+00:00"
+    },
+    {
+      "fingerprint": "954f5bc18732c947",
+      "title": "Google's new Gemini tiers cut free users to its weakest model and lock $5/month subscribers out of Pro",
+      "url": "https://the-decoder.com/googles-new-gemini-tiers-cut-free-users-to-its-weakest-model-and-lock-5-month-subscribers-out-of-pro/",
+      "source": "The Decoder",
+      "date": "2026-10-04T12:24:44+00:00"
+    },
+    {
+      "fingerprint": "a02adc8bb69f27b1",
+      "title": "Religious scholars met with Anthropic",
+      "url": "https://www.nytimes.com/2026/09/29/us/anthropic-claude-morals-ai.html",
+      "source": "Hacker News",
+      "date": "2026-10-04T12:24:44+00:00"
     }
   ],
   "note": "Daily AI news episodes for the AI Progress AI channel.",
@@ -319,6 +354,11 @@
       "at": "2026-10-03T22:34:55+00:00",
       "video_id": "aWTRn0Pw1zI",
       "url": "https://youtu.be/aWTRn0Pw1zI"
+    },
+    {
+      "at": "2026-10-04T12:24:44+00:00",
+      "video_id": "gan1Dl-OPXk",
+      "url": "https://youtu.be/gan1Dl-OPXk"
     }
   ]
 }

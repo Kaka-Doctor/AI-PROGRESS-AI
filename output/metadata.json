@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-04T06:02:25+00:00",
-  "title": "Autonomous Agents Hit Hard Reality As OpenAI Safety Lead Resigns | AI Progress Daily",
-  "description": "Today on AI Progress Daily, we explore Microsoft's ThinkingBox revealing hard truths about agent reliability, why agents need documentation over memory, and an open-source harness pumping out thirty-six scientific manuscripts. Plus, quiet meetings at Anthropic and another major departure from OpenAI.\n\nSTORIES COVERED\n\u2022 The Agent Said It Was Done. The Database Disagreed. \u2014 Hugging Face (huggingface.co)\n\u2022 Agents don't need memory, they need documentation \u2014 Hacker News (liao.gg)\n\u2022 Open-source \"Boot",
+  "generated_at": "2026-10-04T12:24:44+00:00",
+  "title": "Google Gemini Massive Tier Overhaul Plus Open Source Lunar AI | AI Progress Daily",
+  "description": "Google announces major tier shifts for Gemini locking free users to Flash-Lite while NASA and IBM launch open source lunar foundation models. Plus, why AI agent architectures are rethinking memory and religious scholars advise Anthropic.\n\nSTORIES COVERED\n\u2022 Agents don't need memory, they need documentation \u2014 Hacker News (liao.gg)\n\u2022 NASA and IBM's open source lunar model turns 17 years of orbiter data into a foundation for lunar science \u2014 The Decoder (the-decoder.com)\n\u2022 The Agent Said It Was Done.",
   "tags": [
     "AI news",
     "artificial intelligence",
@@ -14,56 +14,60 @@
     "DeepSeek",
     "AI progress",
     "AI Progress AI",
-    "Agent",
-    "Said",
-    "Done",
-    "Database",
-    "Disagreed",
     "Agents",
     "need",
     "memory",
     "they",
     "need",
     "documentation",
-    "BootLoops",
-    "harness",
-    "supports",
-    "models",
-    "performing",
-    "precise",
-    "scientific",
-    "calculations"
+    "NASA",
+    "open",
+    "source",
+    "lunar",
+    "model",
+    "turns",
+    "years",
+    "orbiter",
+    "data",
+    "foundation",
+    "lunar",
+    "science",
+    "Agent",
+    "Said",
+    "Done",
+    "Database",
+    "Disagreed"
   ],
   "stories": [
-    {
-      "title": "The Agent Said It Was Done. The Database Disagreed.",
-      "source": "Hugging Face",
-      "url": "https://huggingface.co/blog/microsoft/thinkingbox",
-      "score": 56.7
-    },
     {
       "title": "Agents don't need memory, they need documentation",
       "source": "Hacker News",
       "url": "https://liao.gg/blog/agents-dont-need-memory",
-      "score": 53.0
+      "score": 63.0
     },
     {
-      "title": "Open-source \"BootLoops\" harness supports AI models in performing precise scientific calculations",
+      "title": "NASA and IBM's open source lunar model turns 17 years of orbiter data into a foundation for lunar science",
       "source": "The Decoder",
-      "url": "https://the-decoder.com/open-source-bootloops-harness-supports-ai-models-in-performing-precise-scientific-calculations/",
-      "score": 51.1
+      "url": "https://the-decoder.com/nasa-and-ibms-open-source-lunar-model-turns-17-years-of-orbiter-data-into-a-foundation-for-lunar-science/",
+      "score": 58.3
     },
     {
-      "title": "Anthropic co-founder reportedly told religious leaders he fears having created something that \"suffers perpetually\"",
+      "title": "The Agent Said It Was Done. The Database Disagreed.",
+      "source": "Hugging Face",
+      "url": "https://huggingface.co/blog/microsoft/thinkingbox",
+      "score": 54.5
+    },
+    {
+      "title": "Google's new Gemini tiers cut free users to its weakest model and lock $5/month subscribers out of Pro",
       "source": "The Decoder",
-      "url": "https://the-decoder.com/anthropic-co-founder-reportedly-told-religious-leaders-he-fears-having-created-something-that-suffers-perpetually/",
-      "score": 47.6
+      "url": "https://the-decoder.com/googles-new-gemini-tiers-cut-free-users-to-its-weakest-model-and-lock-5-month-subscribers-out-of-pro/",
+      "score": 53.4
     },
     {
-      "title": "An OpenAI safety employee has quit and is sounding the alarm",
-      "source": "The Verge AI",
-      "url": "https://www.theverge.com/ai-artificial-intelligence/1004408/openai-safety-quits-sounding-the-alarm",
-      "score": 46.9
+      "title": "Religious scholars met with Anthropic",
+      "source": "Hacker News",
+      "url": "https://www.nytimes.com/2026/09/29/us/anthropic-claude-morals-ai.html",
+      "score": 52.0
     }
   ],
   "follow_ups": [],
@@ -79,10 +83,18 @@
     {
       "story": 1,
       "provider": "archive",
-      "title": "Could AI be stealing the voices of our favourite music artists?",
-      "url": "https://archive.org/details/youtube-_feIaNkKmJs",
+      "title": "Unlock the Magic of AI: Start Simple and Elevate Your Creativity",
+      "url": "https://archive.org/details/umcmb-Unlock_the_Magic_of_AI_-_Start_Simple_and_Elevate_Your_Creativity",
       "license": "Internet Archive item (see item page for rights)",
       "used_segments": 3
+    },
+    {
+      "story": 2,
+      "provider": "archive",
+      "title": "Fangruida- The father of modern non-traditional chemical-fuel dual-engine high-s",
+      "url": "https://archive.org/details/DC110618042905",
+      "license": "Public domain",
+      "used_segments": 1
     },
     {
       "story": 2,
@@ -91,14 +103,6 @@
       "url": "https://commons.wikimedia.org/wiki/File:AI_generated_Video_Clip.webm",
       "license": "Wikimedia Commons (CC BY-SA 4.0)",
       "used_segments": 1
-    },
-    {
-      "story": 2,
-      "provider": "archive",
-      "title": "Could AI be stealing the voices of our favourite music artists?",
-      "url": "https://archive.org/details/youtube-_feIaNkKmJs",
-      "license": "Internet Archive item (see item page for rights)",
-      "used_segments": 3
     },
     {
       "story": 3,
@@ -111,10 +115,10 @@
     {
       "story": 3,
       "provider": "archive",
-      "title": "Could AI be stealing the voices of our favourite music artists?",
-      "url": "https://archive.org/details/youtube-_feIaNkKmJs",
+      "title": "UMD Launches Institute Focused on Ethical AI Development",
+      "url": "https://archive.org/details/umtvmd-UMD_Launches_Institute_Focused_on_Ethical_AI_Development",
       "license": "Internet Archive item (see item page for rights)",
-      "used_segments": 3
+      "used_segments": 2
     },
     {
       "story": 4,
@@ -127,10 +131,10 @@
     {
       "story": 4,
       "provider": "archive",
-      "title": "Could AI be stealing the voices of our favourite music artists?",
-      "url": "https://archive.org/details/youtube-_feIaNkKmJs",
+      "title": "ASKING A.I ABOUT CONSPIRACIES PART 2 (I FOUND SAM!) #shorts",
+      "url": "https://archive.org/details/youtube-p57SIf6s9F4",
       "license": "Internet Archive item (see item page for rights)",
-      "used_segments": 3
+      "used_segments": 2
     },
     {
       "story": 5,
@@ -143,8 +147,8 @@
     {
       "story": 5,
       "provider": "archive",
-      "title": "Could AI be stealing the voices of our favourite music artists?",
-      "url": "https://archive.org/details/youtube-_feIaNkKmJs",
+      "title": "Introducing Duet AI for Google Workspace",
+      "url": "https://archive.org/details/youtube-PkOLx3pSoiA",
       "license": "Internet Archive item (see item page for rights)",
       "used_segments": 2
     },
@@ -159,20 +163,20 @@
     {
       "story": 0,
       "provider": "archive",
-      "title": "Digital Tipping Point: Lawyer John Koenig on how people make money with Free Sof",
-      "url": "https://archive.org/details/e-dv146_sf_02_john_koenig_riseforth_linux_consulting_004.ogg",
-      "license": "CC BY-SA 3.0",
+      "title": "From Server Farm to Data Table (33c3) - deutsche \u00dcbersetzung",
+      "url": "https://archive.org/details/youtube-HyZIOc70jIg",
+      "license": "Internet Archive item (see item page for rights)",
       "used_segments": 3
     }
   ],
   "footage_ratio": 0.938,
-  "video_id": "",
-  "video_url": "",
-  "video_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_04_0559.mp4",
-  "thumbnail_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_04_0559_thumb.jpg",
-  "duration_seconds": 405.9,
-  "script_source": "gemini:gemini-3.8-flash",
-  "script_words": 987,
+  "video_id": "gan1Dl-OPXk",
+  "video_url": "https://youtu.be/gan1Dl-OPXk",
+  "video_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_04_1222.mp4",
+  "thumbnail_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_04_1222_thumb.jpg",
+  "duration_seconds": 398.4,
+  "script_source": "gemini:gemini-3.7-flash",
+  "script_words": 969,
   "qa_passed": true,
-  "uploaded": false
+  "uploaded": true
 }
