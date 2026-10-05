@@ -1,11 +1,11 @@
 {
-  "completed": 9,
-  "last_run": "2026-10-04T12:24:44+00:00",
+  "completed": 10,
+  "last_run": "2026-10-05T14:42:09+00:00",
   "last_video": {
-    "id": "gan1Dl-OPXk",
-    "url": "https://youtu.be/gan1Dl-OPXk"
+    "id": "ce4x0GI79L8",
+    "url": "https://youtu.be/ce4x0GI79L8"
   },
-  "last_post_date": "2026-10-04",
+  "last_post_date": "2026-10-05",
   "recent_stories": [
     {
       "fingerprint": "26115d569fba57a1",
@@ -321,6 +321,41 @@
       "url": "https://www.nytimes.com/2026/09/29/us/anthropic-claude-morals-ai.html",
       "source": "Hacker News",
       "date": "2026-10-04T12:24:44+00:00"
+    },
+    {
+      "fingerprint": "c70470e301ba75da",
+      "title": "Run Qwen 3.8 Flash Next (125B) on consumer hardware (RTX 4090) at 100T/s",
+      "url": "https://github.com/Niko1221/Strata",
+      "source": "Hacker News",
+      "date": "2026-10-05T14:42:09+00:00"
+    },
+    {
+      "fingerprint": "0d0e49e5bd0c4a51",
+      "title": "Building advertising for the way people use AI",
+      "url": "https://openai.com/index/new-chatgpt-ads-format-and-measurement",
+      "source": "OpenAI",
+      "date": "2026-10-05T14:42:09+00:00"
+    },
+    {
+      "fingerprint": "c8ec2088bd75df35",
+      "title": "Aleph Alpha releases Kolibri, an open-weight model that makes the case for European AI sovereignty",
+      "url": "https://the-decoder.com/aleph-alpha-releases-kolibri-an-open-weight-model-that-makes-the-case-for-european-ai-sovereignty/",
+      "source": "The Decoder",
+      "date": "2026-10-05T14:42:09+00:00"
+    },
+    {
+      "fingerprint": "93f533af8d25488f",
+      "title": "From Scan to Treatment Plan, AI Helps Close Breast Cancer\u2019s Deadliest Gaps",
+      "url": "https://blogs.nvidia.com/blog/ai-breast-cancer-startups/",
+      "source": "NVIDIA",
+      "date": "2026-10-05T14:42:09+00:00"
+    },
+    {
+      "fingerprint": "65617583080dba78",
+      "title": "ChatGPT's new ad format fills the image generation loading screen with product carousels",
+      "url": "https://the-decoder.com/chatgpts-new-ad-format-fills-the-image-generation-loading-screen-with-product-carousels/",
+      "source": "The Decoder",
+      "date": "2026-10-05T14:42:09+00:00"
     }
   ],
   "note": "Daily AI news episodes for the AI Progress AI channel.",
@@ -359,6 +394,11 @@
       "at": "2026-10-04T12:24:44+00:00",
       "video_id": "gan1Dl-OPXk",
       "url": "https://youtu.be/gan1Dl-OPXk"
+    },
+    {
+      "at": "2026-10-05T14:42:09+00:00",
+      "video_id": "ce4x0GI79L8",
+      "url": "https://youtu.be/ce4x0GI79L8"
     }
   ]
 }
