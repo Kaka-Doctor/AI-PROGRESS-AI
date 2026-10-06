@@ -77,7 +77,12 @@ OFFICIAL_HINTS = ("openai", "anthropic", "deepmind", "google",
 
 def _topic_ok(title: str) -> bool:
     words = {w.strip(".,:;!?()[]") for w in (title or "").lower().split()}
-    return bool(words & TOPIC_WORDS) or "ai" in (title or "").lower()
+    if words & TOPIC_WORDS:
+        return True
+    # standalone "AI" (word boundary) — but NOT the letters inside
+    # "train"/"email"/"main"...
+    return bool(re.search(r"(?<![a-z0-9])ai(?![a-z0-9])",
+                          (title or "").lower()))
 
 
 def official_channel(channel_title: str, video_title: str = "") -> bool:
