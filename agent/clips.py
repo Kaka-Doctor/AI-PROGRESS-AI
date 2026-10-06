@@ -56,12 +56,36 @@ GENERIC_QUERIES = ["artificial intelligence technology", "machine learning",
 TOPIC_WORDS = {"ai", "a.i", "artificial", "intelligence", "robot",
                "tech", "technology", "data", "computer", "neural",
                "machine", "gpu", "server", "chatbot", "automation",
-               "digital", "algorithm", "software", "cyber", "science"}
+               "digital", "algorithm", "software", "cyber", "science",
+               "openai", "anthropic", "claude", "gemini", "chatgpt",
+               "gpt", "llm", "deepmind", "nvidia", "training",
+               "dataset", "quantum", "developer", "coding", "python",
+               "internet", "browser", "startup", "computer", "cpu",
+               "chip", "semiconductor", "processor", "supercomputer",
+               "deep", "learning", "inference", "compute", "cloud"}
+
+# Official / first-party lab & company channels — when a Creative-Commons
+# YouTube result comes from one of these, it is preferred (the channel
+# brief: "use direct videos from open ai, anthropic, google and any other
+# publicly available related video").
+OFFICIAL_HINTS = ("openai", "anthropic", "deepmind", "google",
+                  "nvidia", "microsoft", "meta ai", "ibm", "intel",
+                  "mit", "stanford", "tesla", "xai", "mistral",
+                  "hugging face", "huggingface", "aws", "amazon web",
+                  "googlecloud", "google cloud", "research")
 
 
 def _topic_ok(title: str) -> bool:
     words = {w.strip(".,:;!?()[]") for w in (title or "").lower().split()}
     return bool(words & TOPIC_WORDS) or "ai" in (title or "").lower()
+
+
+def official_channel(channel_title: str, video_title: str = "") -> bool:
+    """Is this YouTube result from (or about) an official AI lab / big
+    tech channel? First-party uploads and demos are exactly what the
+    channel wants chopped in."""
+    hay = f"{channel_title or ''} {video_title or ''}".lower()
+    return any(h in hay for h in OFFICIAL_HINTS)
 
 
 @dataclass
@@ -92,15 +116,44 @@ _STOP = {"the", "and", "with", "from", "this", "that", "just", "into", "over",
 
 
 def story_queries(story: Story) -> list[str]:
-    """Search phrases for a story: specific first, generic fallbacks after."""
+    """Search phrases for a story: specific first, vendor-flavored next
+    (OpenAI / Anthropic / Google DeepMind / NVIDIA first-party videos),
+    generic fallbacks after."""
     words = [w for w in re.findall(r"[A-Za-z0-9\-.]{3,}", story.title)
              if w.lower() not in _STOP]
     specific = " ".join(words[:6])
     out = []
     if len(words) >= 2:
         out.append(specific)
+
+    # vendor-flavored queries — direct footage FROM the lab the story is
+    # about (or the generic big players when the story is industry-wide)
+    hay = f"{story.title} {getattr(story, 'summary', '') or ''}".lower()
+    vendors: list[str] = []
+    if "openai" in hay or "gpt" in hay or "chatgpt" in hay or "sam altman" in hay:
+        vendors += ["OpenAI", "OpenAI demo"]
+    if "anthropic" in hay or "claude" in hay:
+        vendors += ["Anthropic Claude"]
+    if "google" in hay or "gemini" in hay or "deepmind" in hay:
+        vendors += ["Google DeepMind"]
+    if "nvidia" in hay or "gpu" in hay or "blackwell" in hay or "jensen" in hay:
+        vendors += ["NVIDIA AI"]
+    if "meta" in hay or "llama" in hay:
+        vendors += ["Meta AI"]
+    if "microsoft" in hay or "copilot" in hay:
+        vendors += ["Microsoft AI Copilot"]
+    if "training data" in hay or "dataset" in hay or "copyright" in hay:
+        vendors += ["training data machine learning"]
+    if not vendors:                    # industry-wide story → big players
+        vendors = ["OpenAI", "Google DeepMind"]
+
+    # order: most-specific, then the lab's own footage, then the tighter
+    # variant, then the rest — the collector uses the first 3-4 of these
+    out += [vendors[0]]
     if len(words) >= 4:  # tighter variant — top-4 most salient words
         out.append(" ".join(words[:4]))
+    out.extend(vendors[1:])
+
     out.extend(GENERIC_QUERIES[:2])
     return out
 
@@ -124,7 +177,7 @@ def _yt_search(query: str, settings: Settings) -> list[dict]:
     try:
         r = requests.get(YT_SEARCH, params={
             "part": "snippet", "q": query, "type": "video",
-            "license": "creativeCommons", "maxResults": 5,
+            "license": "creativeCommons", "maxResults": 8,
             "videoDuration": "short",   # < 4 min: small downloads, b-roll size
             "relevanceLanguage": "en", "safeSearch": "strict",
         }, headers={"Authorization": f"Bearer {token}"}, timeout=TIMEOUT)

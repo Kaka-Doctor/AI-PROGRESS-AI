@@ -20,19 +20,29 @@ it:
    report…"), never an exact repeat.
 4. **Writes an energetic news-anchor script** with Gemini (facts only — it
    is forbidden to invent products, numbers, or dates).
-5. **Fetches real article imagery** (og:image from the actual announcement
-   pages) for full-bleed b-roll cards with Ken Burns motion.
-6. **Hunts for real, legal video clips** — YouTube Creative-Commons videos
-   (searched via the channel's own API access, downloaded with yt-dlp),
-   Wikimedia Commons (CC0/CC-BY/CC-BY-SA), and the Internet Archive (public
-   domain). Up to 3 clips per episode: each plays ~12 seconds (trimmed,
-   scaled, letterboxed) at the start of its story, then blends back into
-   the slides. Every clip is **attributed in the description** (title,
-   author, link, license) as its license requires. Slides-only is the
-   graceful fallback.
-7. **Renders a 1080p episode** — neon-tech studio slides, giant Anton
-   headlines, animated zoom, real video b-roll — plus an **epic high-
-   contrast thumbnail**.
+5. **Sizes a real-footage pool to the narration** — the episode is
+   ~90% REAL video, slides are only brief animated headlines. Per story
+   the agent hunts topical footage first: the story's own keywords, then
+   the lab's own videos ("OpenAI", "Anthropic Claude", "Google
+   DeepMind", "NVIDIA AI"… — first-party uploads under a
+   Creative-Commons license are preferred and marked `[official
+   channel]` in the attribution). Generic AI/tech b-roll (training
+   data, LLMs, data centers, robots, chips, self-driving…) fills the
+   rest.
+6. **Sources, all license-clean and attributed in the description**:
+   YouTube Creative-Commons (tried FIRST per the channel brief — free
+   real videos about AI, computers and training data; official
+   lab/big-tech channels rank first; after 2 failed yt-dlp downloads
+   it fast-fails off for the run), Wikimedia Commons (CC0/CC-BY/
+   CC-BY-SA/PD), and the Internet Archive (PD/CC). Several segments
+   are chopped from each source at varied offsets — episodes are cut
+   from many real videos, never one long one. Story-specific sources
+   must actually match the story's keywords or vendor, and every
+   title passes an AI/tech topic gate, so the footage is always
+   related to what the narration is talking about.
+7. **Renders a 1080p episode** — each section is a ~2s animated
+   headline slide + a body of real chopped footage (concat-safe mixed
+   encode), plus an **epic high-contrast thumbnail** from a real frame.
 8. **Narrates it with an energetic male voice** (edge-tts
    `en-US-AndrewNeural`, +8% pace) — free, no API key.
 9. **Uploads to YouTube** with title, timestamps, tags, thumbnail, and then
