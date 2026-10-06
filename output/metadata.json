@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-06T12:20:41+00:00",
-  "title": "Anthropic Opus 5.5 Agents Discover New Materials | AI Progress Daily",
-  "description": "Today we cover a massive scientific discovery by Anthropic's Opus 5.5 agents, ChatGPT's bizarre signature generation, OpenAI's new European Union text watermarking strategy, and Deepseek's massive funding round.\n\nSTORIES COVERED\n\u2022 ChatGPT is adding real cartoonists' signatures to fake New Yorker cartoons \u2014 Hacker News (niemanlab.org)\n\u2022 Opus 5.5 agents discover two room-temperature magnetic semiconductor candidates \u2014 Hacker News (vals.ai)\n\u2022 Example.com just launched the biggest redesign in decade",
+  "generated_at": "2026-10-06T13:23:57+00:00",
+  "title": "Opus 5.5 Agents Make BREAKTHROUGH Discovery | AI Progress Daily",
+  "description": "Today on AI Progress Daily, Opus 5.5 agents discover two candidate room temperature magnetic semiconductors. Plus, Reflection drops Beam to challenge Chinese open weight efficiency, NVIDIA reports telecom shifts, and OpenAI tackles EU text provenance.\n\nSTORIES COVERED\n\u2022 Opus 5.5 agents discover two room-temperature magnetic semiconductor candidates \u2014 Hacker News (vals.ai)\n\u2022 Example.com just launched the biggest redesign in decades \u2014 Hacker News (debugbear.com)\n\u2022 Reflection's Beam becomes the mos",
   "tags": [
     "AI news",
     "artificial intelligence",
@@ -14,14 +14,6 @@
     "DeepSeek",
     "AI progress",
     "AI Progress AI",
-    "ChatGPT",
-    "adding",
-    "real",
-    "cartoonists",
-    "signatures",
-    "fake",
-    "Yorker",
-    "cartoons",
     "Opus",
     "agents",
     "discover",
@@ -31,15 +23,17 @@
     "launched",
     "biggest",
     "redesign",
-    "decades"
+    "decades",
+    "Beam",
+    "becomes",
+    "most",
+    "capable",
+    "model",
+    "built",
+    "outside",
+    "China"
   ],
   "stories": [
-    {
-      "title": "ChatGPT is adding real cartoonists' signatures to fake New Yorker cartoons",
-      "source": "Hacker News",
-      "url": "https://www.niemanlab.org/2026/10/chatgpt-is-adding-real-cartoonists-signatures-to-fake-new-yorker-cartoons/",
-      "score": 76.0
-    },
     {
       "title": "Opus 5.5 agents discover two room-temperature magnetic semiconductor candidates",
       "source": "Hacker News",
@@ -50,19 +44,25 @@
       "title": "Example.com just launched the biggest redesign in decades",
       "source": "Hacker News",
       "url": "https://www.debugbear.com/blog/example-dot-com-redesign-history",
-      "score": 67.0
+      "score": 68.0
+    },
+    {
+      "title": "Reflection's Beam becomes the most capable open-weight model built outside China",
+      "source": "The Decoder",
+      "url": "https://the-decoder.com/reflections-beam-becomes-the-most-capable-open-weight-model-built-outside-china/",
+      "score": 65.6
+    },
+    {
+      "title": "Why Telecom Operators Are Building Their AI Strategy on Open Models",
+      "source": "NVIDIA",
+      "url": "https://blogs.nvidia.com/blog/telecom-operators-open-models/",
+      "score": 59.9
     },
     {
       "title": "Our approach to EU text provenance rules",
       "source": "OpenAI",
       "url": "https://openai.com/index/eu-text-provenance",
-      "score": 58.9
-    },
-    {
-      "title": "CATL and Tencent back Deepseek's ballooning funding round as the AI startup eyes a 2027 IPO",
-      "source": "The Decoder",
-      "url": "https://the-decoder.com/catl-and-tencent-back-deepseeks-ballooning-funding-round-as-the-ai-startup-eyes-a-2027-ipo/",
-      "score": 57.6
+      "score": 58.6
     }
   ],
   "follow_ups": [],
@@ -78,8 +78,8 @@
     {
       "story": 1,
       "provider": "archive",
-      "title": "ChatGPT Work for Sales: Account Research and Customer Outreach",
-      "url": "https://archive.org/details/youtube-5DbZAMGZ5oM",
+      "title": "MUFG aims to become AI-native with OpenAI",
+      "url": "https://archive.org/details/youtube-pE1ljLVY1Rg",
       "license": "Internet Archive item (see item page for rights)",
       "used_segments": 3
     },
@@ -94,8 +94,8 @@
     {
       "story": 2,
       "provider": "archive",
-      "title": "Using Voice in ChatGPT Work",
-      "url": "https://archive.org/details/youtube-_Gd9yzAc-WI",
+      "title": "ChatGPT Work for Sales: Account Research and Customer Outreach",
+      "url": "https://archive.org/details/youtube-5DbZAMGZ5oM",
       "license": "Internet Archive item (see item page for rights)",
       "used_segments": 3
     },
@@ -118,13 +118,29 @@
     {
       "story": 4,
       "provider": "commons",
+      "title": "Perbandingan ChatGPT dan DeepSeek.webm",
+      "url": "https://commons.wikimedia.org/wiki/File:Perbandingan_ChatGPT_dan_DeepSeek.webm",
+      "license": "Wikimedia Commons (CC BY-SA 4.0)",
+      "used_segments": 3
+    },
+    {
+      "story": 4,
+      "provider": "archive",
+      "title": "Pastors Are Using ChatGPT to Write Sermons (And Not Telling You)",
+      "url": "https://archive.org/details/youtube-f7HLafbLzV4",
+      "license": "Internet Archive item (see item page for rights)",
+      "used_segments": 2
+    },
+    {
+      "story": 5,
+      "provider": "commons",
       "title": "Wooly Mammoth by OpenAI Sora.webm",
       "url": "https://commons.wikimedia.org/wiki/File:Wooly_Mammoth_by_OpenAI_Sora.webm",
       "license": "Wikimedia Commons (Public domain)",
       "used_segments": 1
     },
     {
-      "story": 4,
+      "story": 5,
       "provider": "commons",
       "title": "Migrating from OpenAI models to Hugging Face models.webm",
       "url": "https://commons.wikimedia.org/wiki/File:Migrating_from_OpenAI_models_to_Hugging_Face_models.webm",
@@ -132,38 +148,30 @@
       "used_segments": 3
     },
     {
-      "story": 5,
+      "story": 0,
       "provider": "commons",
-      "title": "OpenAI Sora in Action- Tokyo Walk.webm",
-      "url": "https://commons.wikimedia.org/wiki/File:OpenAI_Sora_in_Action-_Tokyo_Walk.webm",
+      "title": "VOY Training for Moon and Beyond.webm",
+      "url": "https://commons.wikimedia.org/wiki/File:VOY_Training_for_Moon_and_Beyond.webm",
       "license": "Wikimedia Commons (Public domain)",
       "used_segments": 3
     },
     {
       "story": 0,
-      "provider": "commons",
-      "title": "MTR M-train set arriving at and departing from Whampoa Station.webm",
-      "url": "https://commons.wikimedia.org/wiki/File:MTR_M-train_set_arriving_at_and_departing_from_Whampoa_Station.webm",
-      "license": "Wikimedia Commons (CC BY 4.0)",
-      "used_segments": 3
-    },
-    {
-      "story": 0,
       "provider": "archive",
-      "title": "Centers for Disease Control and Prevention (CDC) - Common AUR Module Data Import",
-      "url": "https://archive.org/details/yt_65UjfmLRlMI",
+      "title": "Python Project Work Enhance Skills With Excellence Technology ( 1)",
+      "url": "https://archive.org/details/python-project-work-enhance-skills-with-excellence-technology-1",
       "license": "Internet Archive item (see item page for rights)",
       "used_segments": 3
     }
   ],
-  "footage_ratio": 0.939,
-  "video_id": "",
-  "video_url": "",
-  "video_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_06_1217.mp4",
-  "thumbnail_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_06_1217_thumb.jpg",
-  "duration_seconds": 359.0,
-  "script_source": "gemini:gemini-3.5-flash",
-  "script_words": 957,
+  "footage_ratio": 0.942,
+  "video_id": "YKWxjUYDN2s",
+  "video_url": "https://youtu.be/YKWxjUYDN2s",
+  "video_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_06_1321.mp4",
+  "thumbnail_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_06_1321_thumb.jpg",
+  "duration_seconds": 360.4,
+  "script_source": "gemini:gemini-3.6-flash",
+  "script_words": 905,
   "qa_passed": true,
-  "uploaded": false
+  "uploaded": true
 }

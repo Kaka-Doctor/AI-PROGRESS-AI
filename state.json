@@ -1,11 +1,11 @@
 {
-  "completed": 10,
-  "last_run": "2026-10-05T14:42:09+00:00",
+  "completed": 11,
+  "last_run": "2026-10-06T13:23:57+00:00",
   "last_video": {
-    "id": "ce4x0GI79L8",
-    "url": "https://youtu.be/ce4x0GI79L8"
+    "id": "YKWxjUYDN2s",
+    "url": "https://youtu.be/YKWxjUYDN2s"
   },
-  "last_post_date": "2026-10-05",
+  "last_post_date": "2026-10-06",
   "recent_stories": [
     {
       "fingerprint": "26115d569fba57a1",
@@ -356,6 +356,41 @@
       "url": "https://the-decoder.com/chatgpts-new-ad-format-fills-the-image-generation-loading-screen-with-product-carousels/",
       "source": "The Decoder",
       "date": "2026-10-05T14:42:09+00:00"
+    },
+    {
+      "fingerprint": "f4e6fd5155df952f",
+      "title": "Opus 5.5 agents discover two room-temperature magnetic semiconductor candidates",
+      "url": "https://www.vals.ai/blogs/room-temperature-magnetic-semiconductors",
+      "source": "Hacker News",
+      "date": "2026-10-06T13:23:57+00:00"
+    },
+    {
+      "fingerprint": "85e8388a84f18c3a",
+      "title": "Example.com just launched the biggest redesign in decades",
+      "url": "https://www.debugbear.com/blog/example-dot-com-redesign-history",
+      "source": "Hacker News",
+      "date": "2026-10-06T13:23:57+00:00"
+    },
+    {
+      "fingerprint": "0324fed5c39540c0",
+      "title": "Reflection's Beam becomes the most capable open-weight model built outside China",
+      "url": "https://the-decoder.com/reflections-beam-becomes-the-most-capable-open-weight-model-built-outside-china/",
+      "source": "The Decoder",
+      "date": "2026-10-06T13:23:57+00:00"
+    },
+    {
+      "fingerprint": "a4cc259d5c512ac5",
+      "title": "Why Telecom Operators Are Building Their AI Strategy on Open Models",
+      "url": "https://blogs.nvidia.com/blog/telecom-operators-open-models/",
+      "source": "NVIDIA",
+      "date": "2026-10-06T13:23:57+00:00"
+    },
+    {
+      "fingerprint": "665c66f9477d5c62",
+      "title": "Our approach to EU text provenance rules",
+      "url": "https://openai.com/index/eu-text-provenance",
+      "source": "OpenAI",
+      "date": "2026-10-06T13:23:57+00:00"
     }
   ],
   "note": "Daily AI news episodes for the AI Progress AI channel.",
@@ -399,6 +434,11 @@
       "at": "2026-10-05T14:42:09+00:00",
       "video_id": "ce4x0GI79L8",
       "url": "https://youtu.be/ce4x0GI79L8"
+    },
+    {
+      "at": "2026-10-06T13:23:57+00:00",
+      "video_id": "YKWxjUYDN2s",
+      "url": "https://youtu.be/YKWxjUYDN2s"
     }
   ]
 }
