@@ -305,6 +305,7 @@ def _try_youtube(query: str, settings: Settings, work_dir: Path,
                     log.info("yt-dlp failed %d downloads — YouTube CC "
                              "disabled for the rest of this run",
                              _yt_fails)
+                    return None      # stop burning candidates NOW
                 continue
             else:
                 _yt_fails = 0
@@ -359,8 +360,8 @@ def collect_footage(stories: list[Story], settings: Settings,
                 if got >= limit:
                     return
                 try:
-                    src = (finder(query, settings, work_dir, exclude,
-                                  story, seg_len, max_seg, story_words)
+                    src = (finder(query, work_dir, exclude, story,
+                                  seg_len, max_seg, story_words)
                            if finder is not _try_youtube else
                            finder(query, settings, work_dir, exclude,
                                   story, seg_len, max_seg, story_words))
