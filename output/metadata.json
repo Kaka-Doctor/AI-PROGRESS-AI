@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-05T14:42:09+00:00",
-  "title": "Massive 125B Model Runs on RTX 4090, Plus OpenAI Adds ChatGPT Ads | AI News",
-  "description": "Open-source developers break consumer hardware barriers by running a 125B parameter model at 100 tokens per second on an RTX 4090. Plus, OpenAI introduces visual display ads into ChatGPT workflows, and Europe drops a sovereign 78-billion-parameter model.\n\nSTORIES COVERED\n\u2022 Run Qwen 3.8 Flash Next (125B) on consumer hardware (RTX 4090) at 100T/s \u2014 Hacker News (github.com)\n\u2022 Building advertising for the way people use AI \u2014 OpenAI (openai.com)\n\u2022 Aleph Alpha releases Kolibri, an open-weight model th",
+  "generated_at": "2026-10-06T12:20:41+00:00",
+  "title": "Anthropic Opus 5.5 Agents Discover New Materials | AI Progress Daily",
+  "description": "Today we cover a massive scientific discovery by Anthropic's Opus 5.5 agents, ChatGPT's bizarre signature generation, OpenAI's new European Union text watermarking strategy, and Deepseek's massive funding round.\n\nSTORIES COVERED\n\u2022 ChatGPT is adding real cartoonists' signatures to fake New Yorker cartoons \u2014 Hacker News (niemanlab.org)\n\u2022 Opus 5.5 agents discover two room-temperature magnetic semiconductor candidates \u2014 Hacker News (vals.ai)\n\u2022 Example.com just launched the biggest redesign in decade",
   "tags": [
     "AI news",
     "artificial intelligence",
@@ -14,56 +14,55 @@
     "DeepSeek",
     "AI progress",
     "AI Progress AI",
-    "Qwen",
-    "Flash",
-    "Next",
-    "125B",
-    "consumer",
-    "hardware",
-    "4090",
-    "Building",
-    "advertising",
-    "people",
-    "Aleph",
-    "Alpha",
-    "releases",
-    "Kolibri",
-    "model",
-    "makes",
-    "case",
-    "European",
-    "sovereignty"
+    "ChatGPT",
+    "adding",
+    "real",
+    "cartoonists",
+    "signatures",
+    "fake",
+    "Yorker",
+    "cartoons",
+    "Opus",
+    "agents",
+    "discover",
+    "magnetic",
+    "semiconductor",
+    "candidates",
+    "launched",
+    "biggest",
+    "redesign",
+    "decades"
   ],
   "stories": [
     {
-      "title": "Run Qwen 3.8 Flash Next (125B) on consumer hardware (RTX 4090) at 100T/s",
+      "title": "ChatGPT is adding real cartoonists' signatures to fake New Yorker cartoons",
       "source": "Hacker News",
-      "url": "https://github.com/Niko1221/Strata",
+      "url": "https://www.niemanlab.org/2026/10/chatgpt-is-adding-real-cartoonists-signatures-to-fake-new-yorker-cartoons/",
+      "score": 76.0
+    },
+    {
+      "title": "Opus 5.5 agents discover two room-temperature magnetic semiconductor candidates",
+      "source": "Hacker News",
+      "url": "https://www.vals.ai/blogs/room-temperature-magnetic-semiconductors",
       "score": 73.0
     },
     {
-      "title": "Building advertising for the way people use AI",
-      "source": "OpenAI",
-      "url": "https://openai.com/index/new-chatgpt-ads-format-and-measurement",
-      "score": 70.5
+      "title": "Example.com just launched the biggest redesign in decades",
+      "source": "Hacker News",
+      "url": "https://www.debugbear.com/blog/example-dot-com-redesign-history",
+      "score": 67.0
     },
     {
-      "title": "Aleph Alpha releases Kolibri, an open-weight model that makes the case for European AI sovereignty",
-      "source": "The Decoder",
-      "url": "https://the-decoder.com/aleph-alpha-releases-kolibri-an-open-weight-model-that-makes-the-case-for-european-ai-sovereignty/",
+      "title": "Our approach to EU text provenance rules",
+      "source": "OpenAI",
+      "url": "https://openai.com/index/eu-text-provenance",
       "score": 58.9
     },
     {
-      "title": "From Scan to Treatment Plan, AI Helps Close Breast Cancer\u2019s Deadliest Gaps",
-      "source": "NVIDIA",
-      "url": "https://blogs.nvidia.com/blog/ai-breast-cancer-startups/",
-      "score": 57.5
-    },
-    {
-      "title": "ChatGPT's new ad format fills the image generation loading screen with product carousels",
+      "title": "CATL and Tencent back Deepseek's ballooning funding round as the AI startup eyes a 2027 IPO",
       "source": "The Decoder",
-      "url": "https://the-decoder.com/chatgpts-new-ad-format-fills-the-image-generation-loading-screen-with-product-carousels/",
-      "score": 57.4
+      "url": "https://the-decoder.com/catl-and-tencent-back-deepseeks-ballooning-funding-round-as-the-ai-startup-eyes-a-2027-ipo/",
+      "score": 57.6
     }
   ],
   "follow_ups": [],
@@ -71,108 +70,100 @@
     {
       "story": 1,
       "provider": "commons",
-      "title": "AI generated video clip -New creative video.webm",
-      "url": "https://commons.wikimedia.org/wiki/File:AI_generated_video_clip_-New_creative_video.webm",
-      "license": "Wikimedia Commons (CC BY-SA 4.0)",
+      "title": "Open AI Sora in Action- Italian Pup.webm",
+      "url": "https://commons.wikimedia.org/wiki/File:Open_AI_Sora_in_Action-_Italian_Pup.webm",
+      "license": "Wikimedia Commons (Public domain)",
       "used_segments": 1
     },
     {
       "story": 1,
       "provider": "archive",
-      "title": "Exploring the digital future | WGS2022",
-      "url": "https://archive.org/details/youtube-AOoIMGEJNfs",
+      "title": "ChatGPT Work for Sales: Account Research and Customer Outreach",
+      "url": "https://archive.org/details/youtube-5DbZAMGZ5oM",
       "license": "Internet Archive item (see item page for rights)",
       "used_segments": 3
     },
     {
       "story": 2,
       "provider": "commons",
-      "title": "Lady Bird Johnson Home Movie -14, HM14- LBJ's 1948 Senate Campaign (1280x720).webm",
-      "url": "https://commons.wikimedia.org/wiki/File:Lady_Bird_Johnson_Home_Movie_-14,_HM14-_LBJ's_1948_Senate_Campaign_(1280x720).webm",
-      "license": "Wikimedia Commons (CC BY 3.0)",
-      "used_segments": 3
-    },
-    {
-      "story": 2,
-      "provider": "commons",
-      "title": "AI generated Video Clip.webm",
-      "url": "https://commons.wikimedia.org/wiki/File:AI_generated_Video_Clip.webm",
-      "license": "Wikimedia Commons (CC BY-SA 4.0)",
+      "title": "OpenAI Sora in Action- Gold Rush.webm",
+      "url": "https://commons.wikimedia.org/wiki/File:OpenAI_Sora_in_Action-_Gold_Rush.webm",
+      "license": "Wikimedia Commons (Public domain)",
       "used_segments": 1
     },
     {
-      "story": 3,
-      "provider": "commons",
-      "title": "AI Stock Analyser.webm",
-      "url": "https://commons.wikimedia.org/wiki/File:AI_Stock_Analyser.webm",
-      "license": "Wikimedia Commons (CC0)",
-      "used_segments": 3
-    },
-    {
-      "story": 3,
+      "story": 2,
       "provider": "archive",
-      "title": "[CES2022] Digital, meet Physical | Samsung",
-      "url": "https://archive.org/details/youtube-S09hviddiss",
+      "title": "Using Voice in ChatGPT Work",
+      "url": "https://archive.org/details/youtube-_Gd9yzAc-WI",
       "license": "Internet Archive item (see item page for rights)",
       "used_segments": 3
     },
     {
-      "story": 4,
+      "story": 3,
       "provider": "commons",
-      "title": "Kamala Harris speaks about racial bias in artificial intelligence - 2020-04-23.ogv",
-      "url": "https://commons.wikimedia.org/wiki/File:Kamala_Harris_speaks_about_racial_bias_in_artificial_intelligence_-_2020-04-23.ogv",
+      "title": "OpenAI - This is Sora 2.webm",
+      "url": "https://commons.wikimedia.org/wiki/File:OpenAI_-_This_is_Sora_2.webm",
       "license": "Wikimedia Commons (Public domain)",
       "used_segments": 3
     },
     {
-      "story": 4,
+      "story": 3,
       "provider": "archive",
-      "title": "ASKING A.I ABOUT CONSPIRACIES PART 2 (I FOUND SAM!) #shorts",
-      "url": "https://archive.org/details/youtube-p57SIf6s9F4",
+      "title": "Setup with ChatGPT",
+      "url": "https://archive.org/details/youtube-IUGEvzfvUWU",
       "license": "Internet Archive item (see item page for rights)",
-      "used_segments": 3
-    },
-    {
-      "story": 5,
-      "provider": "commons",
-      "title": "Ethics of AI in Digital Medicine \u2013 Explanation why transparent explainable AI is important.webm",
-      "url": "https://commons.wikimedia.org/wiki/File:Ethics_of_AI_in_Digital_Medicine_\u2013_Explanation_why_transparent_explainable_AI_is_important.webm",
-      "license": "Wikimedia Commons (CC BY-SA 4.0)",
-      "used_segments": 3
-    },
-    {
-      "story": 5,
-      "provider": "archive",
-      "title": "Introducing Duet AI for Google Workspace",
-      "url": "https://archive.org/details/youtube-PkOLx3pSoiA",
-      "license": "Internet Archive item (see item page for rights)",
-      "used_segments": 3
-    },
-    {
-      "story": 0,
-      "provider": "commons",
-      "title": "Airship flying over the Utah Data Center.webm",
-      "url": "https://commons.wikimedia.org/wiki/File:Airship_flying_over_the_Utah_Data_Center.webm",
-      "license": "Wikimedia Commons (CC BY 4.0)",
       "used_segments": 1
     },
     {
+      "story": 4,
+      "provider": "commons",
+      "title": "Wooly Mammoth by OpenAI Sora.webm",
+      "url": "https://commons.wikimedia.org/wiki/File:Wooly_Mammoth_by_OpenAI_Sora.webm",
+      "license": "Wikimedia Commons (Public domain)",
+      "used_segments": 1
+    },
+    {
+      "story": 4,
+      "provider": "commons",
+      "title": "Migrating from OpenAI models to Hugging Face models.webm",
+      "url": "https://commons.wikimedia.org/wiki/File:Migrating_from_OpenAI_models_to_Hugging_Face_models.webm",
+      "license": "Wikimedia Commons (CC BY 3.0)",
+      "used_segments": 3
+    },
+    {
+      "story": 5,
+      "provider": "commons",
+      "title": "OpenAI Sora in Action- Tokyo Walk.webm",
+      "url": "https://commons.wikimedia.org/wiki/File:OpenAI_Sora_in_Action-_Tokyo_Walk.webm",
+      "license": "Wikimedia Commons (Public domain)",
+      "used_segments": 3
+    },
+    {
+      "story": 0,
+      "provider": "commons",
+      "title": "MTR M-train set arriving at and departing from Whampoa Station.webm",
+      "url": "https://commons.wikimedia.org/wiki/File:MTR_M-train_set_arriving_at_and_departing_from_Whampoa_Station.webm",
+      "license": "Wikimedia Commons (CC BY 4.0)",
+      "used_segments": 3
+    },
+    {
       "story": 0,
       "provider": "archive",
-      "title": "From Server Farm to Data Table (33c3) - deutsche \u00dcbersetzung",
-      "url": "https://archive.org/details/youtube-HyZIOc70jIg",
+      "title": "Centers for Disease Control and Prevention (CDC) - Common AUR Module Data Import",
+      "url": "https://archive.org/details/yt_65UjfmLRlMI",
       "license": "Internet Archive item (see item page for rights)",
       "used_segments": 3
     }
   ],
-  "footage_ratio": 0.937,
-  "video_id": "ce4x0GI79L8",
-  "video_url": "https://youtu.be/ce4x0GI79L8",
-  "video_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_05_1438.mp4",
-  "thumbnail_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_05_1438_thumb.jpg",
-  "duration_seconds": 493.1,
-  "script_source": "gemini:gemini-3.8-flash",
-  "script_words": 1182,
+  "footage_ratio": 0.939,
+  "video_id": "",
+  "video_url": "",
+  "video_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_06_1217.mp4",
+  "thumbnail_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_06_1217_thumb.jpg",
+  "duration_seconds": 359.0,
+  "script_source": "gemini:gemini-3.5-flash",
+  "script_words": 957,
   "qa_passed": true,
-  "uploaded": true
+  "uploaded": false
 }
