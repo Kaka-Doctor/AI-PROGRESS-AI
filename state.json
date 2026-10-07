@@ -1,11 +1,11 @@
 {
-  "completed": 11,
-  "last_run": "2026-10-06T13:23:57+00:00",
+  "completed": 12,
+  "last_run": "2026-10-07T13:44:03+00:00",
   "last_video": {
-    "id": "YKWxjUYDN2s",
-    "url": "https://youtu.be/YKWxjUYDN2s"
+    "id": "Pys_E7mwZng",
+    "url": "https://youtu.be/Pys_E7mwZng"
   },
-  "last_post_date": "2026-10-06",
+  "last_post_date": "2026-10-07",
   "recent_stories": [
     {
       "fingerprint": "26115d569fba57a1",
@@ -391,6 +391,41 @@
       "url": "https://openai.com/index/eu-text-provenance",
       "source": "OpenAI",
       "date": "2026-10-06T13:23:57+00:00"
+    },
+    {
+      "fingerprint": "dfafbf0e79bd211f",
+      "title": "OpenTPU \u2013 An open-source AI accelerator, developed by AI",
+      "url": "https://github.com/FeSens/openTPU",
+      "source": "Hacker News",
+      "date": "2026-10-07T13:44:03+00:00"
+    },
+    {
+      "fingerprint": "f9ce6f7194aa1dcd",
+      "title": "Claude Code\u2019s suggested message feature: I think the real customer is the model",
+      "url": "https://www.zohaib.cc/blog/smartest-claude-code-feature",
+      "source": "Hacker News",
+      "date": "2026-10-07T13:44:03+00:00"
+    },
+    {
+      "fingerprint": "b5f11772ffe87260",
+      "title": "Penguin Mail \u2013 open-source Rust email client for Linux with AI",
+      "url": "https://penguin-mail.com/",
+      "source": "Hacker News",
+      "date": "2026-10-07T13:44:03+00:00"
+    },
+    {
+      "fingerprint": "af51d1f658643bcf",
+      "title": "Strands Decider 2B: a small, open-source, decision model",
+      "url": "https://strandsagents.com/blog/introducing-strands-decider/",
+      "source": "Hacker News",
+      "date": "2026-10-07T13:44:03+00:00"
+    },
+    {
+      "fingerprint": "d44d7c82394e5f2d",
+      "title": "How Jump Trading is scaling quant research with ChatGPT",
+      "url": "https://openai.com/index/jump-trading",
+      "source": "OpenAI",
+      "date": "2026-10-07T13:44:03+00:00"
     }
   ],
   "note": "Daily AI news episodes for the AI Progress AI channel.",
@@ -439,6 +474,11 @@
       "at": "2026-10-06T13:23:57+00:00",
       "video_id": "YKWxjUYDN2s",
       "url": "https://youtu.be/YKWxjUYDN2s"
+    },
+    {
+      "at": "2026-10-07T13:44:03+00:00",
+      "video_id": "Pys_E7mwZng",
+      "url": "https://youtu.be/Pys_E7mwZng"
     }
   ]
 }

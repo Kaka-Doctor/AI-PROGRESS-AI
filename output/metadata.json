@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-06T13:23:57+00:00",
-  "title": "Opus 5.5 Agents Make BREAKTHROUGH Discovery | AI Progress Daily",
-  "description": "Today on AI Progress Daily, Opus 5.5 agents discover two candidate room temperature magnetic semiconductors. Plus, Reflection drops Beam to challenge Chinese open weight efficiency, NVIDIA reports telecom shifts, and OpenAI tackles EU text provenance.\n\nSTORIES COVERED\n\u2022 Opus 5.5 agents discover two room-temperature magnetic semiconductor candidates \u2014 Hacker News (vals.ai)\n\u2022 Example.com just launched the biggest redesign in decades \u2014 Hacker News (debugbear.com)\n\u2022 Reflection's Beam becomes the mos",
+  "generated_at": "2026-10-07T13:44:03+00:00",
+  "title": "Open Source AI Hardware Arrives and OpenAI Transforms Quantitative Research | AI Progress Daily",
+  "description": "We are breaking down the release of OpenTPU, an open-source AI accelerator built by AI. Plus, OpenAI partners with Jump Trading to scale quantitative research using ChatGPT.\n\nSTORIES COVERED\n\u2022 OpenTPU \u2013 An open-source AI accelerator, developed by AI \u2014 Hacker News (github.com)\n\u2022 Claude Code\u2019s suggested message feature: I think the real customer is the model \u2014 Hacker News (zohaib.cc)\n\u2022 Penguin Mail \u2013 open-source Rust email client for Linux with AI \u2014 Hacker News (penguin-mail.com)\n\u2022 Strands Decider",
   "tags": [
     "AI news",
     "artificial intelligence",
@@ -14,55 +14,54 @@
     "DeepSeek",
     "AI progress",
     "AI Progress AI",
-    "Opus",
-    "agents",
-    "discover",
-    "magnetic",
-    "semiconductor",
-    "candidates",
-    "launched",
-    "biggest",
-    "redesign",
-    "decades",
-    "Beam",
-    "becomes",
-    "most",
-    "capable",
+    "OpenTPU",
+    "accelerator",
+    "developed",
+    "Claude",
+    "suggested",
+    "message",
+    "feature",
+    "think",
+    "real",
+    "customer",
     "model",
-    "built",
-    "outside",
-    "China"
+    "Penguin",
+    "Mail",
+    "Rust",
+    "email",
+    "client",
+    "Linux"
   ],
   "stories": [
     {
-      "title": "Opus 5.5 agents discover two room-temperature magnetic semiconductor candidates",
+      "title": "OpenTPU \u2013 An open-source AI accelerator, developed by AI",
       "source": "Hacker News",
-      "url": "https://www.vals.ai/blogs/room-temperature-magnetic-semiconductors",
+      "url": "https://github.com/FeSens/openTPU",
       "score": 73.0
     },
     {
-      "title": "Example.com just launched the biggest redesign in decades",
+      "title": "Claude Code\u2019s suggested message feature: I think the real customer is the model",
       "source": "Hacker News",
-      "url": "https://www.debugbear.com/blog/example-dot-com-redesign-history",
-      "score": 68.0
+      "url": "https://www.zohaib.cc/blog/smartest-claude-code-feature",
+      "score": 66.0
     },
     {
-      "title": "Reflection's Beam becomes the most capable open-weight model built outside China",
-      "source": "The Decoder",
-      "url": "https://the-decoder.com/reflections-beam-becomes-the-most-capable-open-weight-model-built-outside-china/",
-      "score": 65.6
+      "title": "Penguin Mail \u2013 open-source Rust email client for Linux with AI",
+      "source": "Hacker News",
+      "url": "https://penguin-mail.com/",
+      "score": 64.0
     },
     {
-      "title": "Why Telecom Operators Are Building Their AI Strategy on Open Models",
-      "source": "NVIDIA",
-      "url": "https://blogs.nvidia.com/blog/telecom-operators-open-models/",
-      "score": 59.9
+      "title": "Strands Decider 2B: a small, open-source, decision model",
+      "source": "Hacker News",
+      "url": "https://strandsagents.com/blog/introducing-strands-decider/",
+      "score": 64.0
     },
     {
-      "title": "Our approach to EU text provenance rules",
+      "title": "How Jump Trading is scaling quant research with ChatGPT",
       "source": "OpenAI",
-      "url": "https://openai.com/index/eu-text-provenance",
-      "score": 58.6
+      "url": "https://openai.com/index/jump-trading",
+      "score": 63.6
     }
   ],
   "follow_ups": [],
@@ -78,34 +77,34 @@
     {
       "story": 1,
       "provider": "archive",
-      "title": "MUFG aims to become AI-native with OpenAI",
-      "url": "https://archive.org/details/youtube-pE1ljLVY1Rg",
-      "license": "Internet Archive item (see item page for rights)",
-      "used_segments": 3
-    },
-    {
-      "story": 2,
-      "provider": "commons",
-      "title": "OpenAI Sora in Action- Gold Rush.webm",
-      "url": "https://commons.wikimedia.org/wiki/File:OpenAI_Sora_in_Action-_Gold_Rush.webm",
-      "license": "Wikimedia Commons (Public domain)",
-      "used_segments": 1
-    },
-    {
-      "story": 2,
-      "provider": "archive",
       "title": "ChatGPT Work for Sales: Account Research and Customer Outreach",
       "url": "https://archive.org/details/youtube-5DbZAMGZ5oM",
       "license": "Internet Archive item (see item page for rights)",
       "used_segments": 3
     },
     {
-      "story": 3,
+      "story": 2,
       "provider": "commons",
-      "title": "OpenAI - This is Sora 2.webm",
-      "url": "https://commons.wikimedia.org/wiki/File:OpenAI_-_This_is_Sora_2.webm",
+      "title": "STA CLAUDE GATEBUKE ON RWANDA.webm",
+      "url": "https://commons.wikimedia.org/wiki/File:STA_CLAUDE_GATEBUKE_ON_RWANDA.webm",
       "license": "Wikimedia Commons (Public domain)",
       "used_segments": 3
+    },
+    {
+      "story": 2,
+      "provider": "archive",
+      "title": "Anthropic just bought your favorite JS runtime...",
+      "url": "https://archive.org/details/youtube-5JMiNsV7P3Y",
+      "license": "Internet Archive item (see item page for rights)",
+      "used_segments": 2
+    },
+    {
+      "story": 3,
+      "provider": "commons",
+      "title": "OpenAI Sora in Action- Gold Rush.webm",
+      "url": "https://commons.wikimedia.org/wiki/File:OpenAI_Sora_in_Action-_Gold_Rush.webm",
+      "license": "Wikimedia Commons (Public domain)",
+      "used_segments": 1
     },
     {
       "story": 3,
@@ -118,16 +117,16 @@
     {
       "story": 4,
       "provider": "commons",
-      "title": "Perbandingan ChatGPT dan DeepSeek.webm",
-      "url": "https://commons.wikimedia.org/wiki/File:Perbandingan_ChatGPT_dan_DeepSeek.webm",
-      "license": "Wikimedia Commons (CC BY-SA 4.0)",
+      "title": "OpenAI - This is Sora 2.webm",
+      "url": "https://commons.wikimedia.org/wiki/File:OpenAI_-_This_is_Sora_2.webm",
+      "license": "Wikimedia Commons (Public domain)",
       "used_segments": 3
     },
     {
       "story": 4,
       "provider": "archive",
-      "title": "Pastors Are Using ChatGPT to Write Sermons (And Not Telling You)",
-      "url": "https://archive.org/details/youtube-f7HLafbLzV4",
+      "title": "Gemini Robotics \u2500\u2500 AI\u3092\u7269\u7406\u4e16\u754c\u306b\u6301\u3061\u8fbc\u3080",
+      "url": "https://archive.org/details/paper-explain-2503-20020",
       "license": "Internet Archive item (see item page for rights)",
       "used_segments": 2
     },
@@ -158,20 +157,20 @@
     {
       "story": 0,
       "provider": "archive",
-      "title": "Python Project Work Enhance Skills With Excellence Technology ( 1)",
-      "url": "https://archive.org/details/python-project-work-enhance-skills-with-excellence-technology-1",
+      "title": "Centers for Disease Control and Prevention (CDC) - Common AUR Module Data Import",
+      "url": "https://archive.org/details/yt_65UjfmLRlMI",
       "license": "Internet Archive item (see item page for rights)",
       "used_segments": 3
     }
   ],
-  "footage_ratio": 0.942,
-  "video_id": "YKWxjUYDN2s",
-  "video_url": "https://youtu.be/YKWxjUYDN2s",
-  "video_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_06_1321.mp4",
-  "thumbnail_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_06_1321_thumb.jpg",
-  "duration_seconds": 360.4,
-  "script_source": "gemini:gemini-3.6-flash",
-  "script_words": 905,
+  "footage_ratio": 0.939,
+  "video_id": "Pys_E7mwZng",
+  "video_url": "https://youtu.be/Pys_E7mwZng",
+  "video_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_07_1341.mp4",
+  "thumbnail_file": "/home/runner/work/AI-PROGRESS-AI/AI-PROGRESS-AI/output/ai_news_2026_10_07_1341_thumb.jpg",
+  "duration_seconds": 408.6,
+  "script_source": "gemini:gemini-3.5-flash",
+  "script_words": 1115,
   "qa_passed": true,
   "uploaded": true
 }
